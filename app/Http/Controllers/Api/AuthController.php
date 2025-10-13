@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -19,13 +20,20 @@ class AuthController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $data['name'],
-            'email'=> $data['email'],
-            'password' => Hash::make($data['password']),
+            'name'     => $data['name'],
+            'email'    => $data['email'],
+            'password' => Hash::make($data['password']), // bcrypt by default
         ]);
 
+        // optional: revoke others for single session policy
+        $user->tokens()->delete();
+
         $token = $user->createToken('api')->plainTextToken;
-        return response()->json(['token'=>$token, 'user'=>$user], 201);
+
+        return response()->json([
+            'token' => $token,     // or 'access_token' if your FE expects that
+            'user'  => $user,
+        ], 201);
     }
 
     public function login(Request $request)
@@ -36,19 +44,25 @@ class AuthController extends Controller
         ]);
 
         $user = User::where('email', $data['email'])->first();
-        if (!$user || !Hash::check($data['password'], $data['password'])) {
-            // Intentionally always return generic message
-        }
 
+        // ❌ Remove the incorrect Hash::check($plain, $plain)
         if (!$user || !Hash::check($data['password'], $user->password)) {
-            return response()->json(['message'=>'Invalid credentials'], 422);
+            // uniform error to avoid credential probing
+            throw ValidationException::withMessages([
+                'email' => ['Invalid credentials.'],
+            ]);
+            // or: return response()->json(['message' => 'Invalid credentials'], 422);
         }
 
-        // Optional: revoke old tokens for single-session behavior
+        // optional: single-session
         $user->tokens()->delete();
 
         $token = $user->createToken('api')->plainTextToken;
-        return response()->json(['token'=>$token, 'user'=>$user]);
+
+        return response()->json([
+            'token' => $token,
+            'user'  => $user,
+        ]);
     }
 
     public function me(Request $request)
@@ -58,8 +72,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        // Revoke current token
-        $request->user()->currentAccessToken()->delete();
-        return response()->json(['message'=>'Logged out']);
+        $request->user()->currentAccessToken()?->delete();
+        return response()->json(['message' => 'Logged out']);
     }
 }

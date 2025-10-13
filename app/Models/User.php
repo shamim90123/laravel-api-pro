@@ -25,6 +25,15 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $appends = ['primary_role'];
+
+
+    public function getPrimaryRoleAttribute()
+    {
+        return $this->roles->pluck('name')->first();
+    }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *
