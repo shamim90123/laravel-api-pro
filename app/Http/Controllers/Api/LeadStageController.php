@@ -24,40 +24,52 @@ class LeadStageController extends Controller
             'status' => 'in:active,inactive',
         ]);
 
-        $product = LeadStage::create([
+        $leadStage = LeadStage::create([
             'name' => $request->name,
             'status' => $request->status ?? 'active',
         ]);
 
-        return response()->json($product, 201);
+        return response()->json($leadStage, 201);
     }
 
     // Show a product
     public function show($id)
     {
-        $product = LeadStage::findOrFail($id);
-        return response()->json($product);
+        $leadStage = LeadStage::findOrFail($id);
+        return response()->json($leadStage);
     }
 
     // Update a product
     public function update(Request $request, $id)
     {
-        $product = LeadStage::findOrFail($id);
-        $product->update([
+        $leadStage = LeadStage::findOrFail($id);
+        $leadStage->update([
             'name' => $request->name,
             'status' => $request->status ?? 'active',
         ]);
 
-        return response()->json($product);
+        return response()->json($leadStage);
     }
 
     // Toggle product status
     public function toggleStatus($id)
     {
-        $product = LeadStage::findOrFail($id);
-        $product->status = $product->status === 'active' ? 'inactive' : 'active';
-        $product->save();
+        $leadStage = LeadStage::findOrFail($id);
+        $leadStage->status = $leadStage->status === 'active' ? 'inactive' : 'active';
+        $leadStage->save();
 
-        return response()->json($product);
+        return response()->json($leadStage);
+    }
+
+    public function destroy($id)
+    {
+        // Find the product by ID or fail if not found
+        $leadStage = LeadStage::findOrFail($id);
+
+        // Delete the product
+        $leadStage->delete();
+
+        // Return a response indicating the product was deleted
+        return response()->json(null, 204); // No content status
     }
 }

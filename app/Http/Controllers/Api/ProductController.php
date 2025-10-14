@@ -60,4 +60,16 @@ class ProductController extends Controller
 
         return response()->json($product);
     }
+
+    public function destroy($id)
+    {
+        // Find the product by ID or fail if not found
+        $product = Product::findOrFail($id);
+
+        // Delete the product
+        $product->delete();
+
+        // Return a response indicating the product was deleted
+        return response()->json(null, 204); // No content status
+    }
 }

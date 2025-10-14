@@ -37,6 +37,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/products/{id}', [ProductController::class, 'show']);
         Route::put('/products/{id}', [ProductController::class, 'update']);
         Route::patch('/products/{id}/status', [ProductController::class, 'toggleStatus']); // Toggle product status
+        Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
 
         Route::get('/lead_stages', [LeadStageController::class, 'index']);
@@ -44,6 +45,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/lead_stages/{id}', [LeadStageController::class, 'show']);
         Route::put('/lead_stages/{id}', [LeadStageController::class, 'update']);
         Route::patch('/lead_stages/{id}/status', [LeadStageController::class, 'toggleStatus']); // Toggle product status
+        Route::delete('/lead_stages/{id}', [LeadStageController::class, 'destroy']);
 
     });
 
