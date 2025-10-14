@@ -38,7 +38,7 @@ class LeadController extends Controller
         // If you link to the authenticated user:
         // $data['user_id'] = $request->user()->id;
         // For now (no auth needed), set to null-safe or a default:
-        $data['user_id'] = $request->user()->id ?? auth()->id() ?? 1;
+        // $data['user_id'] = $request->user()->id ?? auth()->id() ?? 1;
 
         $lead = Lead::create($data);
         return response()->json($lead, 201);
