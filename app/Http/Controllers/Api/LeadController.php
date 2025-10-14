@@ -27,11 +27,11 @@ class LeadController extends Controller
             'link'   => ['nullable','string','max:2048'],
             'item_id'=> ['nullable','string','max:255'],
 
-            'sams_pay' => ['boolean'],
-            'sams_manage' => ['boolean'],
-            'sams_platform' => ['boolean'],
-            'sams_pay_client_management' => ['boolean'],
-            'booked_demo' => ['boolean'],
+            'sams_pay' => ['nullable','string','max:255'],
+            'sams_manage' => ['nullable','string','max:255'],
+            'sams_platform' => ['nullable','string','max:255'],
+            'sams_pay_client_management' => ['nullable','string','max:255'],
+            'booked_demo' => ['nullable','string','max:255'],
             'comments' => ['nullable','string'],
         ]);
 

@@ -22,17 +22,17 @@ return new class extends Migration
             $table->string('job_title')->nullable();
             $table->string('phone')->nullable();
             $table->string('city')->nullable();
-            $table->string('link')->nullable();
+            $table->text('link')->nullable();
             $table->string('item_id')->nullable();
 
             // Product interest flags (true/false)
-            $table->boolean('sams_pay')->default(false);
-            $table->boolean('sams_manage')->default(false);
-            $table->boolean('sams_platform')->default(false);
-            $table->boolean('sams_pay_client_management')->default(false);
+            $table->string('sams_pay')->nullable();
+            $table->string('sams_manage')->nullable();
+            $table->string('sams_platform')->nullable();
+            $table->string('sams_pay_client_management')->nullable();
 
             // Booking and comments
-            $table->boolean('booked_demo')->default(false);
+            $table->string('booked_demo')->nullable();
             $table->text('comments')->nullable();
 
             $table->timestamps();
