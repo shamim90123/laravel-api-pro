@@ -6,6 +6,8 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\LeadStageController;
+use App\Http\Controllers\Api\LeadController;
+use App\Http\Controllers\Api\ContactController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -29,8 +31,12 @@ Route::prefix('v1')->group(function () {
 
         Route::apiResource('leads', \App\Http\Controllers\Api\LeadController::class);
 
-        Route::apiResource('users', UserController::class);
 
+        Route::post('leads/{lead}/contacts', [ContactController::class, 'store']);  // Create contact for a specific lead
+        Route::delete('leads/{lead}/contacts/{contact}', [ContactController::class, 'destroy']);  // Delete contact
+
+        Route::apiResource('users', UserController::class);
+        Route::get('leads/{id}', [LeadController::class, 'show']);  // Fetch single lead by ID
 
         Route::get('/products', [ProductController::class, 'index']);
         Route::post('/products', [ProductController::class, 'store']);

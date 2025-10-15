@@ -14,40 +14,25 @@ class LeadController extends Controller
         return response()->json($leads);
     }
 
-     public function store(Request $request)
+
+    public function store(Request $request)
     {
         $data = $request->validate([
-            'name'   => ['required','string','max:255'],
-            'email'  => ['required','email','max:255'],
-            'firstname' => ['nullable','string','max:255'],
-            'lastname'  => ['nullable','string','max:255'],
-            'job_title' => ['nullable','string','max:255'],
-            'phone'  => ['nullable','string','max:255'],
-            'city'   => ['nullable','string','max:255'],
-            'link'   => ['nullable','string','max:2048'],
-            'item_id'=> ['nullable','string','max:255'],
-
-            'sams_pay' => ['nullable','string','max:255'],
-            'sams_manage' => ['nullable','string','max:255'],
-            'sams_platform' => ['nullable','string','max:255'],
-            'sams_pay_client_management' => ['nullable','string','max:255'],
-            'booked_demo' => ['nullable','string','max:255'],
-            'comments' => ['nullable','string'],
+            'lead_name' => ['required', 'string', 'max:255'],
+            'destination_id' => ['required', 'integer'],
+            'city' => ['nullable', 'string', 'max:255'],
         ]);
-
-        // If you link to the authenticated user:
-        // $data['user_id'] = $request->user()->id;
-        // For now (no auth needed), set to null-safe or a default:
-        // $data['user_id'] = $request->user()->id ?? auth()->id() ?? 1;
 
         $lead = Lead::create($data);
         return response()->json($lead, 201);
     }
-
-    public function show(Lead $lead)
+    public function show($id)
     {
-        // $this->authorize('view', $lead);
-        return response()->json($lead->load('user:id,name'));
+        $lead = Lead::with('contacts')->find($id);
+    if (!$lead) {
+        return response()->json(['message' => 'Lead not found'], 404);
+    }
+    return response()->json($lead);
     }
 
     public function update(Request $request, Lead $lead)
