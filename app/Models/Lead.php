@@ -16,4 +16,19 @@ class Lead extends Model
     {
         return $this->hasMany(LeadContact::class); // Define the relationship to LeadContact
     }
+
+    public function comments()
+    {
+        return $this->hasMany(\App\Models\LeadComment::class);
+    }
+
+    // public function destination()
+    // {
+    //     return $this->belongsTo(\App\Models\Destination::class, 'destination_id');
+    // }
+
+    // public function leadStage()
+    // {
+    //     return $this->belongsTo(\App\Models\LeadStage::class, 'lead_stage_id');
+    // }
 }

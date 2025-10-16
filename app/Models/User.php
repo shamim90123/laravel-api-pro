@@ -56,4 +56,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // public function leadComments()
+    // {
+    //     return $this->hasMany(\App\Models\LeadComment::class);
+    // }
 }

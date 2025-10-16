@@ -38,6 +38,10 @@ Route::prefix('v1')->group(function () {
         Route::apiResource('users', UserController::class);
         Route::get('leads/{id}', [LeadController::class, 'show']);  // Fetch single lead by ID
 
+        Route::get('leads/{lead}/comments',   [LeadController::class, 'comments']);       // list (paginated)
+        Route::post('leads/{lead}/comments',  [LeadController::class, 'storeComment']);   // create
+        Route::delete('leads/{lead}/comments/{comment}', [LeadController::class, 'destroyComment']); // delete
+
         Route::get('/products', [ProductController::class, 'index']);
         Route::post('/products', [ProductController::class, 'store']);
         Route::get('/products/{id}', [ProductController::class, 'show']);
