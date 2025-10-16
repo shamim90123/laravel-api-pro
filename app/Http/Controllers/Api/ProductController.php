@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    // Get all products
+    // Get all products for product list and leads
     public function index()
     {
         $products = Product::orderBy('name', 'asc')->get();
         return response()->json($products);
     }
+
 
     // Store a new product
     public function store(Request $request)

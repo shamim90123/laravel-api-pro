@@ -65,16 +65,15 @@ class LeadController extends Controller
     public function show($id)
     {
         $lead = Lead::with('contacts')->find($id);
-    if (!$lead) {
-        return response()->json(['message' => 'Lead not found'], 404);
-    }
-    return response()->json($lead);
+        if (!$lead) {
+            return response()->json(['message' => 'Lead not found'], 404);
+        }
+        return response()->json($lead);
     }
 
 
     public function destroy(Lead $lead)
     {
-        // $this->authorize('delete', $lead);
         $lead->delete();
         return response()->json(['message'=>'Deleted']);
     }
