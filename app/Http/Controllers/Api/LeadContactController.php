@@ -8,7 +8,7 @@ use App\Models\LeadContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ContactController extends Controller
+class LeadContactController extends Controller
 {
     public function store(Lead $lead, Request $request)
     {
