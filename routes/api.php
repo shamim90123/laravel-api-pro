@@ -32,8 +32,9 @@ Route::prefix('v1')->group(function () {
         Route::apiResource('leads', \App\Http\Controllers\Api\LeadController::class);
 
 
-        Route::post('leads/{lead}/contacts', [ContactController::class, 'store']);  // Create contact for a specific lead
-        Route::delete('leads/{lead}/contacts/{contact}', [ContactController::class, 'destroy']);  // Delete contact
+        Route::post('leads/{lead}/contacts', [ContactController::class, 'store']);
+        Route::delete('contacts/{contact}', [ContactController::class, 'destroy']);
+        Route::post('contacts/{contact}/primary', [ContactController::class, 'setPrimary']);
 
         Route::apiResource('users', UserController::class);
         Route::get('leads/{id}', [LeadController::class, 'show']);  // Fetch single lead by ID
