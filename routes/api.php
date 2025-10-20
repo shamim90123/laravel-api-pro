@@ -37,6 +37,7 @@ Route::prefix('v1')->group(function () {
         Route::get('/leads/{lead}/products', [\App\Http\Controllers\Api\LeadController::class, 'products']);
         Route::put('/leads/{lead}/products', [\App\Http\Controllers\Api\LeadController::class, 'assignProducts']);
         Route::post('/leads/{lead}/products', [\App\Http\Controllers\Api\LeadController::class, 'assignProducts']); // allow POST too
+        Route::get('/countries', [\App\Http\Controllers\Api\LeadController::class, 'getCountries']);
 
         // Contact routes
         Route::post('leads/{lead}/contacts', [LeadContactController::class, 'store']);

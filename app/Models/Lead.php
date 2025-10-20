@@ -22,15 +22,21 @@ class Lead extends Model
         return $this->hasMany(\App\Models\LeadComment::class);
     }
 
-    // public function destination()
-    // {
-    //     return $this->belongsTo(\App\Models\Destination::class, 'destination_id');
-    // }
+    public function destination()
+    {
+        return $this->belongsTo(\App\Models\Country::class, 'destination_id');
+    }
 
     // public function leadStage()
     // {
     //     return $this->belongsTo(\App\Models\LeadStage::class, 'lead_stage_id');
     // }
+
+    public function leadProducts()
+    {
+        return $this->hasMany(LeadProduct::class);
+    }
+
 
     public function products()
     {

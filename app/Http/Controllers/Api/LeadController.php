@@ -68,6 +68,7 @@ class LeadController extends Controller
     public function show($id)
     {
         $lead = Lead::with([
+                'destination:id,name',
                 'contacts',
                 'comments' => function($q) { $q->latest('created_at'); },
                 'comments.user:id,name' // include commenter name
@@ -82,6 +83,11 @@ class LeadController extends Controller
 
     public function destroy(Lead $lead)
     {
+        $lead->leadProducts()->delete();
+        $lead->contacts()->delete();
+        $lead->comments()->delete();
+
+        // Finally delete the lead itself
         $lead->delete();
         return response()->json(['message' => 'Deleted']);
     }
@@ -187,6 +193,22 @@ class LeadController extends Controller
         return response()->json([
             'message' => 'Products assigned successfully.',
             'data'    => $items,
+        ], Response::HTTP_OK);
+    }
+
+
+    /**
+     * Show a list of all of the countries.
+     *
+     *
+     */
+    public function getCountries()
+    {
+        $countries = DB::table('countries')->get();
+
+        return response()->json([
+            'message' => 'Countries retrieved successfully.',
+            'data'    => $countries,
         ], Response::HTTP_OK);
     }
 }
