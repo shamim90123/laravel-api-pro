@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\LeadController;
 use App\Http\Controllers\Api\LeadStageController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\DashboardController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -31,6 +32,8 @@ Route::prefix('v1')->group(function () {
 
         // User routes
         Route::apiResource('users', UserController::class);
+
+        Route::get('/stats/overview', [DashboardController::class, 'overview']);
 
         Route::apiResource('leads', \App\Http\Controllers\Api\LeadController::class);
         Route::get('leads/{id}', [LeadController::class, 'show']);  // Fetch single lead by ID
