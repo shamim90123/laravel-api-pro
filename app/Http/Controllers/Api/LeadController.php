@@ -13,7 +13,7 @@ class LeadController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Lead::query();
+        $query = Lead::with('destination:id,flag,name,iso_3166_2');
 
         if ($search = $request->get('q')) {
             $query->where(function($q) use ($search) {
@@ -68,7 +68,7 @@ class LeadController extends Controller
     public function show($id)
     {
         $lead = Lead::with([
-                'destination:id,name',
+                'destination:id,name,flag,iso_3166_2',
                 'contacts',
                 'comments' => function($q) { $q->latest('created_at'); },
                 'comments.user:id,name' // include commenter name
