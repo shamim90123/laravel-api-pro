@@ -42,6 +42,17 @@ class UserController extends Controller
 
         return $page;
     }
+
+    public function userList()
+    {
+        $users = User::orderBy('name', 'asc')->get();
+
+        return [
+            'data' => $users
+        ];
+    }
+
+
     public function show(User $user)
     {
         $user->load('roles:id,name');

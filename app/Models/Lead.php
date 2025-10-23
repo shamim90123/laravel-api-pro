@@ -10,7 +10,7 @@ class Lead extends Model
     /** @use HasFactory<\Database\Factories\LeadFactory> */
     use HasFactory;
 
-    protected $fillable = ['lead_name', 'destination_id', 'city'];
+    protected $fillable = ['lead_name', 'destination_id', 'city', 'account_manager_id'];
 
     public function contacts()
     {
@@ -42,5 +42,10 @@ class Lead extends Model
     {
         return $this->belongsToMany(Product::class, 'lead_products')
                     ->withTimestamps();
+    }
+
+    public function accountManager()
+    {
+        return $this->belongsTo(User::class, 'account_manager_id');
     }
 }

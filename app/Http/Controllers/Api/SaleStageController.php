@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
-use App\Models\LeadStage;
+use App\Models\SaleStage;
 use Illuminate\Http\Request;
 
-class LeadStageController extends Controller
+class SaleStageController extends Controller
 {
-    // Get all lead_stages
+    // Get all sale_stages
     public function index()
     {
-        $lead_stages = LeadStage::orderBy('name', 'asc')->get();
-        return response()->json($lead_stages);
+        $sale_stages = SaleStage::orderBy('name', 'asc')->get();
+        return response()->json($sale_stages);
     }
 
     // Store a new product
@@ -22,7 +22,7 @@ class LeadStageController extends Controller
             'status' => 'in:active,inactive',
         ]);
 
-        $leadStage = LeadStage::create([
+        $leadStage = SaleStage::create([
             'name' => $request->name,
             'status' => $request->status ?? 'active',
         ]);
@@ -33,14 +33,14 @@ class LeadStageController extends Controller
     // Show a product
     public function show($id)
     {
-        $leadStage = LeadStage::findOrFail($id);
+        $leadStage = SaleStage::findOrFail($id);
         return response()->json($leadStage);
     }
 
     // Update a product
     public function update(Request $request, $id)
     {
-        $leadStage = LeadStage::findOrFail($id);
+        $leadStage = SaleStage::findOrFail($id);
         $leadStage->update([
             'name' => $request->name,
             'status' => $request->status ?? 'active',
@@ -52,7 +52,7 @@ class LeadStageController extends Controller
     // Toggle product status
     public function toggleStatus($id)
     {
-        $leadStage = LeadStage::findOrFail($id);
+        $leadStage = SaleStage::findOrFail($id);
         $leadStage->status = $leadStage->status === 'active' ? 'inactive' : 'active';
         $leadStage->save();
 
@@ -62,7 +62,7 @@ class LeadStageController extends Controller
     public function destroy($id)
     {
         // Find the product by ID or fail if not found
-        $leadStage = LeadStage::findOrFail($id);
+        $leadStage = SaleStage::findOrFail($id);
 
         // Delete the product
         $leadStage->delete();
