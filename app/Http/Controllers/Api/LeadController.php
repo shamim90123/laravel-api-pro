@@ -7,6 +7,8 @@ use App\Models\LeadComment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\Product;
+
 
 
 class LeadController extends Controller
@@ -174,18 +176,131 @@ class LeadController extends Controller
     /**
      * GET: List products currently linked to the lead
      */
-    public function products(Lead $lead)
-    {
-        // Return minimal fields needed by your UI (id, name, code/sku, etc.)
-        $items = $lead->products()
-            ->select('products.id', 'products.name')
-            ->orderBy('products.name')
-            ->get();
+    // public function products(Lead $lead)
+    // {
+    //     // Return minimal fields needed by your UI (id, name, code/sku, etc.)
+    //     $items = $lead->products()
+    //         ->select('products.id', 'products.name')
+    //         ->orderBy('products.name')
+    //         ->get();
 
-        return response()->json([
-            'data' => $items,
+    //     return response()->json([
+    //         'data' => $items,
+    //     ]);
+    // }
+
+public function products(Lead $lead)
+{
+    $items = $lead->products()
+        ->withPivot(['stage_id', 'account_manager_id'])
+        ->select('products.id', 'products.name')
+        ->orderBy('products.name')
+        ->get()
+        ->map(fn ($p) => [
+            'id'   => $p->id,
+            'name' => $p->name,
+            'pivot'=> [
+                'sales_stage_id'     => $p->pivot->stage_id,
+                'account_manager_id' => $p->pivot->account_manager_id,
+            ],
+        ]);
+
+    return response()->json(['data' => $items]);
+}
+
+
+/**
+ * PUT /leads/{lead}/products/{product}
+ * body: { sales_stage_id: nullable|int, account_manager_id: nullable|int }
+ */
+public function updateProductLink(Request $request, Lead $lead, Product $product)
+{
+    $validated = $request->validate([
+        'sales_stage_id'     => ['nullable', 'integer', 'exists:lead_stages,id'],
+        'account_manager_id' => ['nullable', 'integer', 'exists:users,id'],
+    ]);
+
+    // attach if missing; then update pivot
+    if (! $lead->products()->where('products.id', $product->id)->exists()) {
+        $lead->products()->attach($product->id, [
+            'stage_id'            => $validated['sales_stage_id']     ?? null,
+            'account_manager_id'  => $validated['account_manager_id'] ?? null,
+        ]);
+    } else {
+        $lead->products()->updateExistingPivot($product->id, [
+            'stage_id'            => $validated['sales_stage_id']     ?? null,
+            'account_manager_id'  => $validated['account_manager_id'] ?? null,
         ]);
     }
+
+    // return the refreshed single link
+    $ref = $lead->products()->where('products.id', $product->id)
+        ->withPivot(['stage_id', 'account_manager_id'])
+        ->firstOrFail();
+
+    return response()->json([
+        'message' => 'Product link updated',
+        'data' => [
+            'id'   => $ref->id,
+            'name' => $ref->name,
+            'pivot'=> [
+                'sales_stage_id'     => $ref->pivot->stage_id,
+                'account_manager_id' => $ref->pivot->account_manager_id,
+            ],
+        ],
+    ]);
+}
+
+/**
+ * PUT /api/v1/leads/{lead}/products/bulk
+ * Body:
+ * {
+ *   "items": [
+ *     { "product_id": 11, "sales_stage_id": 3, "account_manager_id": 7 },
+ *     { "product_id": 12, "sales_stage_id": null, "account_manager_id": 5 }
+ *   ]
+ * }
+ */
+public function bulkUpdateProductLinks(Request $request, Lead $lead)
+{
+    $validated = $request->validate([
+        'items'                      => ['required', 'array', 'min:1'],
+        'items.*.product_id'         => ['required', 'integer', 'exists:products,id'],
+        'items.*.sales_stage_id'     => ['nullable', 'integer', 'exists:lead_stages,id'],
+        'items.*.account_manager_id' => ['nullable', 'integer', 'exists:users,id'],
+    ]);
+
+    DB::transaction(function () use ($lead, $validated) {
+        foreach ($validated['items'] as $it) {
+            $lead->products()->syncWithoutDetaching([
+                $it['product_id'] => [
+                    'stage_id'            => $it['sales_stage_id']     ?? null,
+                    'account_manager_id'  => $it['account_manager_id'] ?? null,
+                ],
+            ]);
+        }
+    });
+
+    // return refreshed list
+    $items = $lead->products()
+        ->withPivot(['stage_id', 'account_manager_id'])
+        ->select('products.id', 'products.name')
+        ->orderBy('products.name')
+        ->get()
+        ->map(fn ($p) => [
+            'id'   => $p->id,
+            'name' => $p->name,
+            'pivot'=> [
+                'sales_stage_id'     => $p->pivot->stage_id,
+                'account_manager_id' => $p->pivot->account_manager_id,
+            ],
+        ]);
+
+    return response()->json([
+        'message' => 'Product links updated',
+        'data'    => $items,
+    ]);
+}
 
      /**
      * PUT/POST: Assign products to a lead (replaces existing set).

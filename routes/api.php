@@ -39,7 +39,7 @@ Route::prefix('v1')->group(function () {
         Route::apiResource('leads', \App\Http\Controllers\Api\LeadController::class);
         Route::get('leads/{id}', [LeadController::class, 'show']);  // Fetch single lead by ID
         Route::post('leads/account-manager/{id}', [LeadController::class, 'assignAccountManager']);  // Fetch single lead by ID
-        Route::get('/leads/{lead}/products', [\App\Http\Controllers\Api\LeadController::class, 'products']);
+        // Route::get('/leads/{lead}/products', [\App\Http\Controllers\Api\LeadController::class, 'products']);
         Route::put('/leads/{lead}/products', [\App\Http\Controllers\Api\LeadController::class, 'assignProducts']);
         Route::post('/leads/{lead}/products', [\App\Http\Controllers\Api\LeadController::class, 'assignProducts']); // allow POST too
         Route::get('/countries', [\App\Http\Controllers\Api\LeadController::class, 'getCountries']);
@@ -59,6 +59,16 @@ Route::delete('leads/{lead}/comments/{comment}', [LeadController::class, 'destro
         Route::get('leads/{lead}/comments',   [LeadController::class, 'comments']);       // list (paginated)
         Route::post('leads/{lead}/comments',  [LeadController::class, 'storeComment']);   // create
         Route::delete('leads/{lead}/comments/{comment}', [LeadController::class, 'destroyComment']); // delete
+
+
+        // 1) Static/bulk FIRST
+Route::put('/leads/{lead}/products/bulk', [LeadController::class, 'bulkUpdateProductLinks']);
+
+// 2) Dynamic (single link) AFTER
+Route::put('/leads/{lead}/products/{product}', [LeadController::class, 'updateProductLink']);
+
+// 3) Read
+Route::get('/leads/{lead}/products', [LeadController::class, 'products']);
 
         // Product routes
         Route::get('/products', [ProductController::class, 'index']);

@@ -12,9 +12,16 @@ class Product extends Model
     protected $fillable = ['name', 'status'];
 
 
+    // public function leads()
+    // {
+    //     return $this->belongsToMany(Lead::class, 'lead_products')
+    //                 ->withTimestamps();
+    // }
+
     public function leads()
-    {
-        return $this->belongsToMany(Lead::class, 'lead_products')
-                    ->withTimestamps();
-    }
+{
+    return $this->belongsToMany(Lead::class, 'lead_products')
+        ->withPivot(['stage_id', 'account_manager_id'])
+        ->withTimestamps();
+}
 }
