@@ -349,6 +349,7 @@ class LeadController extends Controller
                             \App\Models\LeadComment::create([
                                 'lead_id'    => $lead->id,
                                 'user_id' => $contactId,
+                                'user_type' => 2, // 2 = LeadContact
                                 'comment'    => $commentText,
                             ]);
                             $commentsCreated++;
@@ -514,6 +515,7 @@ class LeadController extends Controller
                         'comment'    => $commentText,
                         'created_at' => $createdAt,    // honour source timestamp
                         'updated_at' => $createdAt,    // keep same as created_at
+                        'user_type' => 2,    // 2 = LeadContact
                     ]);
 
                     $inserted++;

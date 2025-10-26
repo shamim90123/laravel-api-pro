@@ -77,6 +77,8 @@ Route::prefix('v1')->group(function () {
         Route::get('leads/{lead}/comments',              [LeadCommentController::class, 'index']);
         Route::post('leads/{lead}/comments',             [LeadCommentController::class, 'store']);
         Route::delete('leads/{lead}/comments/{comment}', [LeadCommentController::class, 'destroy']);
+        Route::match(['patch', 'put'], 'leads/{lead}/comments/{comment}', [LeadCommentController::class, 'update']);
+
 
         // Lead ↔ Products
         Route::get('leads/{lead}/products',            [LeadProductController::class, 'index']);
