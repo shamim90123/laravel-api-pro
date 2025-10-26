@@ -63,12 +63,15 @@ Route::prefix('v1')->group(function () {
         Route::post('leads/account-manager/{lead}', [LeadController::class, 'assignAccountManager']);
         Route::post('/leads/bulk-importer',    [LeadController::class, 'bulkImporter']);
         Route::post('/leads/bulk-comment-importer',    [LeadController::class, 'bulkCommentImporter']);
+        Route::patch('leads/{lead}/status', [LeadController::class, 'updateStatus']);
+
 
         // Contacts
         Route::get('leads/{lead}/contacts',             [LeadContactController::class, 'index']);
         Route::post('leads/{lead}/contacts',            [LeadContactController::class, 'store_update']);
         Route::delete('contacts/{contact}',             [LeadContactController::class, 'destroy']);
         Route::post('contacts/{contact}/primary',       [LeadContactController::class, 'setPrimary']);
+
 
         // Comments
         Route::get('leads/{lead}/comments',              [LeadCommentController::class, 'index']);

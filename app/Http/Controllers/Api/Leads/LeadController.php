@@ -588,4 +588,31 @@ class LeadController extends Controller
         }
     }
 
+
+    /**
+     * PATCH /api/v1/leads/{lead}/status
+     * Body: { "status": 0|1|2 }
+     */
+    public function updateStatus(Request $request, Lead $lead): JsonResponse
+    {
+        $validated = $request->validate([
+            'status' => ['required', 'integer', 'in:0,1,2'],
+        ]);
+
+        $lead->status = (int) $validated['status'];
+        $lead->save();
+
+        $lead->loadMissing([
+            'destination:id,flag,name,iso_3166_2',
+            'accountManager:id,name',
+        ])->loadCount([
+            'contacts',
+            'comments as notes_count',
+        ]);
+
+        return response()->json([
+            'message' => 'Lead status updated',
+            'data'    => $lead,
+        ]);
+    }
 }
