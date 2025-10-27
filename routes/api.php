@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\SaleStageController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\LookupController;
+use App\Http\Controllers\Api\PasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,20 @@ Route::prefix('v1')->group(function () {
     */
     Route::post('register', [AuthController::class, 'register']);
     Route::post('login',    [AuthController::class, 'login']);
+
+
+
+    // Public (no auth)
+    Route::post('password/forgot', [PasswordController::class, 'forgot'])
+        ->middleware('throttle:5,1'); // 5 req/min
+    Route::post('password/reset',  [PasswordController::class, 'reset'])
+        ->middleware('throttle:5,1');
+
+    // Authenticated
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('password/change', [PasswordController::class, 'change']);
+    });
+
 
     /*
     |----------------------------------------------------------------------
