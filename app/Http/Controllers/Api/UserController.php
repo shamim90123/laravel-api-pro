@@ -13,6 +13,17 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        // Spatie permission gates per action
+        $this->middleware('permission:products.view')->only(['index', 'show']);
+        $this->middleware('permission:products.create')->only(['store']);
+        $this->middleware('permission:products.update')->only(['update']);
+        $this->middleware('permission:products.delete')->only(['destroy']);
+        $this->middleware('permission:products.toggle-status')->only(['toggleStatus']);
+    }
+
     public function index(Request $request)
     {
         $query = User::query()

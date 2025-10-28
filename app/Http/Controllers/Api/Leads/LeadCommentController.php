@@ -9,6 +9,17 @@ use Illuminate\Http\JsonResponse;
 
 class LeadCommentController extends Controller
 {
+
+    public function __construct()
+    {
+        // Spatie permission gates per action
+        $this->middleware('permission:lead-comments.view')->only(['index', 'show']);
+        $this->middleware('permission:lead-comments.create')->only(['store']);
+        $this->middleware('permission:lead-comments.update')->only(['update']);
+        $this->middleware('permission:lead-comments.delete')->only(['destroy']);
+    }
+
+
     // GET /leads/{lead}/comments
     public function index(Lead $lead, Request $request): JsonResponse
     {

@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\DB;
 
 class LeadProductController extends Controller
 {
+
+    public function __construct()
+    {
+        // Spatie permission gates per action
+        $this->middleware('permission:lead-products.view')->only(['index']);
+        $this->middleware('permission:lead-products.assign')->only(['assign']);
+        $this->middleware('permission:lead-products.bulk-update')->only(['bulkUpdate']);
+    }
+
     // GET /leads/{lead}/products
     public function index(Lead $lead): JsonResponse
     {

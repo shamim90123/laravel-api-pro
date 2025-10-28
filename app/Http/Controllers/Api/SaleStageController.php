@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class SaleStageController extends Controller
 {
+
+    public function __construct()
+    {
+        // Spatie permission gates per action
+        $this->middleware('permission:stages.view')->only(['index', 'show']);
+        $this->middleware('permission:stages.create')->only(['store']);
+        $this->middleware('permission:stages.update')->only(['update']);
+        $this->middleware('permission:stages.delete')->only(['destroy']);
+        $this->middleware('permission:stages.toggle-status')->only(['toggleStatus']);
+    }
+
     // Get all sale_stages
     public function index()
     {

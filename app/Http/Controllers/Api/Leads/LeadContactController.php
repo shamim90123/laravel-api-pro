@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\DB;
 
 class LeadContactController extends Controller
 {
+
+    public function __construct()
+    {
+        // Spatie permission gates per action
+        $this->middleware('permission:lead-contacts.view')->only(['index', 'show']);
+        $this->middleware('permission:lead-contacts.create')->only(['store']);
+        $this->middleware('permission:lead-contacts.update')->only(['update']);
+        $this->middleware('permission:lead-contacts.delete')->only(['destroy']);
+    }
+
     public function index(Lead $lead, Request $request)
     {
         // Optional: support ?q=search and pagination

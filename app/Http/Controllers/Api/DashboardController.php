@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        // Spatie permission gates per action
+        $this->middleware('permission:dashboard.view')->only(['overview']);
+    }
+
     public function overview(): JsonResponse
     {
         $totalLeads    = Lead::count();

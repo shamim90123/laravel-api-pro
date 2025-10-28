@@ -25,10 +25,6 @@ class LeadController extends Controller
         $this->middleware('permission:leads.create')->only(['store']);
         $this->middleware('permission:leads.update')->only(['update']);
         $this->middleware('permission:leads.delete')->only(['destroy']);
-
-        // If you have extra endpoints, add them too, e.g.:
-        // $this->middleware('permission:leads.bulk-import')->only(['bulkImport']);
-        // $this->middleware('permission:leads.update-status')->only(['updateStatus']);
     }
 
 

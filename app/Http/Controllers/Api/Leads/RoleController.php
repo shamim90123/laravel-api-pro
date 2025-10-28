@@ -10,6 +10,15 @@ use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        // Spatie permission gates per action
+        $this->middleware('permission:roles.view')->only(['index', 'show']);
+        $this->middleware('permission:roles.create')->only(['store']);
+        $this->middleware('permission:roles.update')->only(['update']);
+        $this->middleware('permission:roles.delete')->only(['destroy']);
+    }
+
     private function guard(): string
     {
         return config('permission.defaults.guard') ?? config('permission.default_guard') ?? 'web';

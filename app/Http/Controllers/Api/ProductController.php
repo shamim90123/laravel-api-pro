@@ -7,6 +7,19 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        // Spatie permission gates per action
+        $this->middleware('permission:users.view')->only(['index', 'show']);
+        $this->middleware('permission:users.create')->only(['store']);
+        $this->middleware('permission:users.update')->only(['update']);
+        $this->middleware('permission:users.delete')->only(['destroy']);
+        $this->middleware('permission:users.toggle-status')->only(['toggleStatus']);
+        $this->middleware('permission:users.assign-roles')->only(['assign-roles']);
+    }
+
+
     // Get all products for product list and leads
     public function index()
     {
