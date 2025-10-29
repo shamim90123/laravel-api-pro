@@ -65,6 +65,8 @@ class LeadProductController extends Controller
                     $it['product_id'] => [
                         'stage_id'            => $it['sales_stage_id']     ?? null,
                         'account_manager_id'  => $it['account_manager_id'] ?? null,
+                        'contact_id'          => $it['contact_id'] ?? null,
+                        'notes'               => $it['notes'] ?? null,
                     ],
                 ]);
             }
