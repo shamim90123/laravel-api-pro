@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS `cache` (
   PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table crm_backend_api.cache: ~2 rows (approximately)
+-- Dumping data for table crm_backend_api.cache: ~1 rows (approximately)
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-	('sams-global-cache-spatie.permission.cache', 'a:3:{s:5:"alias";a:4:{s:1:"a";s:2:"id";s:1:"b";s:4:"name";s:1:"c";s:10:"guard_name";s:1:"r";s:5:"roles";}s:11:"permissions";a:39:{i:0;a:4:{s:1:"a";i:1;s:1:"b";s:10:"users.view";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:1;a:4:{s:1:"a";i:2;s:1:"b";s:12:"users.create";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:2;a:4:{s:1:"a";i:3;s:1:"b";s:12:"users.update";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:3;a:4:{s:1:"a";i:4;s:1:"b";s:12:"users.delete";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:4;a:4:{s:1:"a";i:5;s:1:"b";s:18:"users.assign-roles";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:5;a:4:{s:1:"a";i:6;s:1:"b";s:10:"leads.view";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:6;a:4:{s:1:"a";i:7;s:1:"b";s:12:"leads.create";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:7;a:4:{s:1:"a";i:8;s:1:"b";s:12:"leads.update";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:8;a:4:{s:1:"a";i:9;s:1:"b";s:12:"leads.delete";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:9;a:4:{s:1:"a";i:10;s:1:"b";s:28:"leads.assign-account-manager";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:10;a:4:{s:1:"a";i:11;s:1:"b";s:17:"leads.bulk-import";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:11;a:4:{s:1:"a";i:12;s:1:"b";s:25:"leads.bulk-comment-import";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:12;a:4:{s:1:"a";i:13;s:1:"b";s:19:"leads.update-status";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:13;a:4:{s:1:"a";i:14;s:1:"b";s:18:"lead-contacts.view";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:14;a:4:{s:1:"a";i:15;s:1:"b";s:20:"lead-contacts.upsert";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:15;a:4:{s:1:"a";i:16;s:1:"b";s:20:"lead-contacts.delete";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:16;a:4:{s:1:"a";i:17;s:1:"b";s:25:"lead-contacts.set-primary";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:17;a:4:{s:1:"a";i:18;s:1:"b";s:18:"lead-comments.view";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:18;a:4:{s:1:"a";i:19;s:1:"b";s:20:"lead-comments.create";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:19;a:4:{s:1:"a";i:20;s:1:"b";s:20:"lead-comments.update";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:20;a:4:{s:1:"a";i:21;s:1:"b";s:20:"lead-comments.delete";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:21;a:4:{s:1:"a";i:22;s:1:"b";s:18:"lead-products.view";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:22;a:4:{s:1:"a";i:23;s:1:"b";s:20:"lead-products.assign";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:23;a:4:{s:1:"a";i:24;s:1:"b";s:25:"lead-products.bulk-update";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:24;a:4:{s:1:"a";i:25;s:1:"b";s:13:"products.view";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:25;a:4:{s:1:"a";i:26;s:1:"b";s:15:"products.create";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:26;a:4:{s:1:"a";i:27;s:1:"b";s:15:"products.update";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:27;a:4:{s:1:"a";i:28;s:1:"b";s:15:"products.delete";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:28;a:4:{s:1:"a";i:29;s:1:"b";s:22:"products.toggle-status";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:29;a:4:{s:1:"a";i:30;s:1:"b";s:11:"stages.view";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:30;a:4:{s:1:"a";i:31;s:1:"b";s:13:"stages.create";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:31;a:4:{s:1:"a";i:32;s:1:"b";s:13:"stages.update";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:32;a:4:{s:1:"a";i:33;s:1:"b";s:13:"stages.delete";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:33;a:4:{s:1:"a";i:34;s:1:"b";s:20:"stages.toggle-status";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:34;a:4:{s:1:"a";i:35;s:1:"b";s:14:"dashboard.view";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:35;a:4:{s:1:"a";i:37;s:1:"b";s:10:"roles.view";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:36;a:4:{s:1:"a";i:38;s:1:"b";s:12:"roles.create";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:37;a:4:{s:1:"a";i:39;s:1:"b";s:12:"roles.update";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:38;a:4:{s:1:"a";i:40;s:1:"b";s:12:"roles.delete";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}}s:5:"roles";a:2:{i:0;a:3:{s:1:"a";i:1;s:1:"b";s:5:"admin";s:1:"c";s:3:"web";}i:1;a:3:{s:1:"a";i:2;s:1:"b";s:12:"sale-manager";s:1:"c";s:3:"web";}}}', 1761737534);
+	('sams-global-cache-spatie.permission.cache', 'a:3:{s:5:"alias";a:4:{s:1:"a";s:2:"id";s:1:"b";s:4:"name";s:1:"c";s:10:"guard_name";s:1:"r";s:5:"roles";}s:11:"permissions";a:39:{i:0;a:4:{s:1:"a";i:1;s:1:"b";s:10:"users.view";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:1;a:4:{s:1:"a";i:2;s:1:"b";s:12:"users.create";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:2;a:4:{s:1:"a";i:3;s:1:"b";s:12:"users.update";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:3;a:4:{s:1:"a";i:4;s:1:"b";s:12:"users.delete";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:4;a:4:{s:1:"a";i:5;s:1:"b";s:18:"users.assign-roles";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:5;a:4:{s:1:"a";i:6;s:1:"b";s:10:"leads.view";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:6;a:4:{s:1:"a";i:7;s:1:"b";s:12:"leads.create";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:7;a:4:{s:1:"a";i:8;s:1:"b";s:12:"leads.update";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:8;a:4:{s:1:"a";i:9;s:1:"b";s:12:"leads.delete";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:9;a:4:{s:1:"a";i:10;s:1:"b";s:28:"leads.assign-account-manager";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:10;a:4:{s:1:"a";i:11;s:1:"b";s:17:"leads.bulk-import";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:11;a:4:{s:1:"a";i:12;s:1:"b";s:25:"leads.bulk-comment-import";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:12;a:4:{s:1:"a";i:13;s:1:"b";s:19:"leads.update-status";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:13;a:4:{s:1:"a";i:14;s:1:"b";s:18:"lead-contacts.view";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:14;a:4:{s:1:"a";i:15;s:1:"b";s:20:"lead-contacts.upsert";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:15;a:4:{s:1:"a";i:16;s:1:"b";s:20:"lead-contacts.delete";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:16;a:4:{s:1:"a";i:17;s:1:"b";s:25:"lead-contacts.set-primary";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:17;a:4:{s:1:"a";i:18;s:1:"b";s:18:"lead-comments.view";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:18;a:4:{s:1:"a";i:19;s:1:"b";s:20:"lead-comments.create";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:19;a:4:{s:1:"a";i:20;s:1:"b";s:20:"lead-comments.update";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:20;a:4:{s:1:"a";i:21;s:1:"b";s:20:"lead-comments.delete";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:21;a:4:{s:1:"a";i:22;s:1:"b";s:18:"lead-products.view";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:22;a:4:{s:1:"a";i:23;s:1:"b";s:20:"lead-products.assign";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:23;a:4:{s:1:"a";i:24;s:1:"b";s:25:"lead-products.bulk-update";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:24;a:4:{s:1:"a";i:25;s:1:"b";s:13:"products.view";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:25;a:4:{s:1:"a";i:26;s:1:"b";s:15:"products.create";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:26;a:4:{s:1:"a";i:27;s:1:"b";s:15:"products.update";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:27;a:4:{s:1:"a";i:28;s:1:"b";s:15:"products.delete";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:28;a:4:{s:1:"a";i:29;s:1:"b";s:22:"products.toggle-status";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:29;a:4:{s:1:"a";i:30;s:1:"b";s:11:"stages.view";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:30;a:4:{s:1:"a";i:31;s:1:"b";s:13:"stages.create";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:31;a:4:{s:1:"a";i:32;s:1:"b";s:13:"stages.update";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:32;a:4:{s:1:"a";i:33;s:1:"b";s:13:"stages.delete";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:33;a:4:{s:1:"a";i:34;s:1:"b";s:20:"stages.toggle-status";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:34;a:4:{s:1:"a";i:35;s:1:"b";s:14:"dashboard.view";s:1:"c";s:3:"web";s:1:"r";a:2:{i:0;i:1;i:1;i:2;}}i:35;a:4:{s:1:"a";i:37;s:1:"b";s:10:"roles.view";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:36;a:4:{s:1:"a";i:38;s:1:"b";s:12:"roles.create";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:37;a:4:{s:1:"a";i:39;s:1:"b";s:12:"roles.update";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}i:38;a:4:{s:1:"a";i:40;s:1:"b";s:12:"roles.delete";s:1:"c";s:3:"web";s:1:"r";a:1:{i:0;i:1;}}}s:5:"roles";a:2:{i:0;a:3:{s:1:"a";i:1;s:1:"b";s:5:"admin";s:1:"c";s:3:"web";}i:1;a:3:{s:1:"a";i:2;s:1:"b";s:12:"sale-manager";s:1:"c";s:3:"web";}}}', 1761804546);
 
 -- Dumping structure for table crm_backend_api.cache_locks
 CREATE TABLE IF NOT EXISTS `cache_locks` (
@@ -377,13 +377,13 @@ CREATE TABLE IF NOT EXISTS `leads` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `status` tinyint DEFAULT '1' COMMENT '1= active, 2= hold, 0=inactive',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1493 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1494 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table crm_backend_api.leads: ~719 rows (approximately)
 INSERT INTO `leads` (`id`, `lead_name`, `destination_id`, `account_manager_id`, `city`, `created_at`, `updated_at`, `status`) VALUES
 	(770, 'Buckinghamshire New University', 826, NULL, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', 1),
 	(771, 'University of Aberdeen', 826, NULL, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', 1),
-	(772, 'Abertay University', 826, NULL, NULL, '2025-10-26 05:10:40', '2025-10-28 06:36:47', 1),
+	(772, 'Abertay University', 826, NULL, NULL, '2025-10-26 05:10:40', '2025-10-29 04:56:44', 1),
 	(773, 'Aberystwith University', 826, NULL, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', 1),
 	(774, 'Anglia Ruskin University', 826, NULL, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', 1),
 	(775, 'Arts University Bournemouth', 826, NULL, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', 1),
@@ -833,7 +833,7 @@ INSERT INTO `leads` (`id`, `lead_name`, `destination_id`, `account_manager_id`, 
 	(1219, 'Santa Ana College', 826, NULL, 'Santa Ana', '2025-10-26 05:17:42', '2025-10-26 05:17:42', 1),
 	(1220, 'Bloomsbury Institute London', 826, NULL, 'London', '2025-10-26 05:17:42', '2025-10-26 05:17:42', 1),
 	(1221, 'Kennedy University', 826, NULL, 'Los Angeles', '2025-10-26 05:17:42', '2025-10-26 05:17:42', 1),
-	(1222, 'AIP LANGUAGE INSTITUTE', 826, NULL, 'Valencia', '2025-10-26 05:17:42', '2025-10-26 05:17:42', 1),
+	(1222, 'AIP LANGUAGE INSTITUTE', 826, NULL, 'Valencia', '2025-10-26 05:17:42', '2025-10-28 23:42:16', 0),
 	(1223, 'L\'Italiano Porticando Srl', 826, NULL, 'Torino', '2025-10-26 05:17:42', '2025-10-26 05:17:42', 1),
 	(1224, 'CEC - Cork English College', 826, NULL, 'Cork', '2025-10-26 05:17:42', '2025-10-26 05:17:42', 1),
 	(1225, 'Lexis English & Lexis Training', 826, NULL, 'Noosa', '2025-10-26 05:17:42', '2025-10-26 05:17:42', 1),
@@ -1044,7 +1044,7 @@ INSERT INTO `leads` (`id`, `lead_name`, `destination_id`, `account_manager_id`, 
 	(1430, 'F+U Academy of Languages', 826, NULL, 'Heidelberg', '2025-10-26 05:17:43', '2025-10-26 05:17:43', 1),
 	(1431, 'Fachhochschule Kärnten - Carinthia University of Applied Sciences', 826, NULL, 'Villach', '2025-10-26 05:17:43', '2025-10-26 05:17:43', 1),
 	(1432, 'Home Language International (HLI)', 826, NULL, 'London', '2025-10-26 05:17:43', '2025-10-26 05:17:43', 1),
-	(1433, 'A Door to Italy - Italian language school', 826, 12, 'Genoa', '2025-10-26 05:17:43', '2025-10-28 06:37:00', 1),
+	(1433, 'A Door to Italy - Italian language school', 826, 1, 'Genoa', '2025-10-26 05:17:43', '2025-10-29 05:15:20', 1),
 	(1434, 'Westcoast Connection - Summer Programs for Juniors', 826, NULL, 'New York', '2025-10-26 05:17:43', '2025-10-26 05:17:43', 1),
 	(1435, 'Audencia Business School', 826, NULL, 'Nantes CEDEX 3', '2025-10-26 05:17:43', '2025-10-26 05:17:43', 1),
 	(1436, 'ACE English Malta', 826, NULL, 'St. Julians', '2025-10-26 05:17:43', '2025-10-26 05:17:43', 1),
@@ -1099,7 +1099,8 @@ INSERT INTO `leads` (`id`, `lead_name`, `destination_id`, `account_manager_id`, 
 	(1485, 'Easy School of Languages', 826, NULL, 'Valletta', '2025-10-26 05:17:43', '2025-10-26 05:17:43', 1),
 	(1486, 'Copperfield International School - Verbier', 826, NULL, 'Verbier', '2025-10-26 05:17:43', '2025-10-26 05:17:43', 1),
 	(1487, 'Geneva School of Diplomacy', 826, NULL, 'Le Grand-Saconnex', '2025-10-26 05:17:43', '2025-10-26 05:17:43', 1),
-	(1488, 'HTMi, Hotel and Tourism Management Institute Switzerland', 826, NULL, 'Soerenberg', '2025-10-26 05:17:43', '2025-10-26 05:17:43', 1);
+	(1488, 'HTMi, Hotel and Tourism Management Institute Switzerland', 826, NULL, 'Soerenberg', '2025-10-26 05:17:43', '2025-10-26 05:17:43', 1),
+	(1493, 'ABC', 4, 10, 'Dhaka', '2025-10-29 06:58:14', '2025-10-29 07:07:13', 1);
 
 -- Dumping structure for table crm_backend_api.lead_comments
 CREATE TABLE IF NOT EXISTS `lead_comments` (
@@ -1111,7 +1112,7 @@ CREATE TABLE IF NOT EXISTS `lead_comments` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `user_type` tinyint DEFAULT '1' COMMENT '1= users, 2 = lead_contact',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table crm_backend_api.lead_comments: ~28 rows (approximately)
 INSERT INTO `lead_comments` (`id`, `lead_id`, `user_id`, `comment`, `created_at`, `updated_at`, `user_type`) VALUES
@@ -1143,8 +1144,10 @@ INSERT INTO `lead_comments` (`id`, `lead_id`, `user_id`, `comment`, `created_at`
 	(27, 805, 1, 'hi', '2025-10-26 05:11:37', '2025-10-26 05:11:37', 1),
 	(28, 805, 1, 'dd', '2025-10-26 05:13:50', '2025-10-26 05:13:50', 1),
 	(31, 843, 1, 's', '2025-10-26 06:36:33', '2025-10-26 06:36:33', 1),
-	(32, 1433, 1, 'Test comment A Door to Italy - Italian language school', '2025-10-27 02:54:55', '2025-10-27 03:50:54', 1),
-	(33, 1433, 1, 'This is test comment.', '2025-10-27 02:55:09', '2025-10-27 03:50:34', 1);
+	(32, 1433, 1, 'Sources said the bloc -- comprising Ganosamhati Andolan, JSD, Nagorik Oikya, Biplobi Workers Party, Bhasani Jonosokti Party, and Rashtra Sanskar Andolan -- will remain united and join any new alliance collectively.', '2025-10-27 02:54:55', '2025-10-29 04:58:33', 1),
+	(33, 1433, 1, 'He said NCP has proposed an alliance with "joint leadership" to the Gono Odhikar Parishad.', '2025-10-27 02:55:09', '2025-10-29 04:59:13', 1),
+	(35, 1433, 1, 'Multiple sources within the NCP told The Daily Star that the initiative aims to build a coalition outside the spheres of BNP and Jamaat-e-Islami.', '2025-10-28 23:49:27', '2025-10-29 04:59:08', 1),
+	(36, 1433, 1, 'Discussions are underway to form a new nine-party alliance as a potential "third force" ahead of the upcoming national election.', '2025-10-28 23:49:31', '2025-10-29 04:59:03', 1);
 
 -- Dumping structure for table crm_backend_api.lead_contacts
 CREATE TABLE IF NOT EXISTS `lead_contacts` (
@@ -1165,7 +1168,7 @@ CREATE TABLE IF NOT EXISTS `lead_contacts` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `fk_lead_contacts_lead_id` (`lead_id`),
   CONSTRAINT `fk_lead_contacts_lead_id` FOREIGN KEY (`lead_id`) REFERENCES `leads` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=892 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=895 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table crm_backend_api.lead_contacts: ~891 rows (approximately)
 INSERT INTO `lead_contacts` (`id`, `lead_id`, `first_name`, `last_name`, `name`, `email`, `phone`, `job_title`, `department`, `is_primary`, `created_at`, `updated_at`, `item_id`, `link`) VALUES
@@ -2001,7 +2004,6 @@ INSERT INTO `lead_contacts` (`id`, `lead_id`, `first_name`, `last_name`, `name`,
 	(830, 1430, 'Elena', 'Dillmann', 'Elena Dillmann', 'languages@fuu.de', NULL, 'International Project Manager', NULL, 0, '2025-10-26 05:17:43', '2025-10-26 05:17:43', NULL, NULL),
 	(831, 1431, 'Dana', 'Mirnig', 'Dana Mirnig', 'info@fh-kaernten.at', NULL, NULL, NULL, 0, '2025-10-26 05:17:43', '2025-10-26 05:17:43', NULL, NULL),
 	(832, 1432, 'Paula', 'Toledo', 'Paula Toledo', 'info@hli.co.uk', NULL, 'HLI, Director', NULL, 0, '2025-10-26 05:17:43', '2025-10-26 05:17:43', NULL, NULL),
-	(833, 1433, 'Gaia', 'Turco', 'Gaia Turco', 'direzione@adoortoitaly.com', NULL, 'Founder and Director', NULL, 1, '2025-10-26 05:17:43', '2025-10-27 02:39:27', NULL, NULL),
 	(834, 1434, 'Isabella', 'Sayger', 'Isabella Sayger', 'info@westcoastconnection.com', NULL, 'Director', NULL, 0, '2025-10-26 05:17:43', '2025-10-26 05:17:43', NULL, NULL),
 	(835, 1435, 'Adrien', 'Bernard', 'Adrien Bernard', 'international@audencia.com', NULL, 'International Admissions Manager for Africa', NULL, 0, '2025-10-26 05:17:43', '2025-10-26 05:17:43', NULL, NULL),
 	(836, 1436, 'Adelia', 'Mubarakshina', 'Adelia Mubarakshina', 'info@aceenglishmalta.com', NULL, 'Senior International Relations Executive', NULL, 0, '2025-10-26 05:17:43', '2025-10-26 05:17:43', NULL, NULL),
@@ -2059,7 +2061,9 @@ INSERT INTO `lead_contacts` (`id`, `lead_id`, `first_name`, `last_name`, `name`,
 	(888, 1485, 'Kasia', 'Parascandalo', 'Kasia Parascandalo', 'info@easysl.com', NULL, 'Sales and Marketing Manager', NULL, 0, '2025-10-26 05:17:43', '2025-10-26 05:17:43', NULL, NULL),
 	(889, 1486, 'Natalia', 'Volchugova', 'Natalia Volchugova', 'info@copperfield.education', NULL, 'Associate Director, International Student Recruitment', NULL, 0, '2025-10-26 05:17:43', '2025-10-26 05:17:43', NULL, NULL),
 	(890, 1487, 'Arnold', 'Szepesi', 'Arnold Szepesi', 'info@genevadiplomacy.com', NULL, 'Director', NULL, 0, '2025-10-26 05:17:43', '2025-10-26 05:17:43', NULL, NULL),
-	(891, 1488, 'Vinoth', 'Prakas', 'Vinoth Prakas', 'htmi@htmi.ch', NULL, 'Director of Diplomatic Relations', NULL, 0, '2025-10-26 05:17:43', '2025-10-26 05:17:43', NULL, NULL);
+	(891, 1488, 'Vinoth', 'Prakas', 'Vinoth Prakas', 'htmi@htmi.ch', NULL, 'Director of Diplomatic Relations', NULL, 0, '2025-10-26 05:17:43', '2025-10-26 05:17:43', NULL, NULL),
+	(893, 1433, 'Dane', 'Moody', 'Dane Moody', 'tewubizuxi@mailinator.com', '+1 (118) 599-5366', 'Software Engineer', NULL, 1, '2025-10-28 23:49:04', '2025-10-29 00:01:26', NULL, NULL),
+	(894, 1493, 't', 't', 't t', 'shamimcrm@revinr.com', '+1 (882) 319-7348', 't', NULL, 0, '2025-10-29 07:02:53', '2025-10-29 07:02:53', NULL, NULL);
 
 -- Dumping structure for table crm_backend_api.lead_products
 CREATE TABLE IF NOT EXISTS `lead_products` (
@@ -2069,6 +2073,8 @@ CREATE TABLE IF NOT EXISTS `lead_products` (
   `account_manager_id` bigint unsigned DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `contact_id` bigint DEFAULT NULL,
+  `notes` longtext COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`lead_id`,`product_id`),
   KEY `lead_products_product_id_idx` (`product_id`),
   KEY `lead_products_stage_id_idx` (`stage_id`),
@@ -2079,61 +2085,64 @@ CREATE TABLE IF NOT EXISTS `lead_products` (
   CONSTRAINT `lead_products_stage_id_fk` FOREIGN KEY (`stage_id`) REFERENCES `sale_stages` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table crm_backend_api.lead_products: ~52 rows (approximately)
-INSERT INTO `lead_products` (`lead_id`, `product_id`, `stage_id`, `account_manager_id`, `created_at`, `updated_at`) VALUES
-	(774, 2, 4, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(776, 2, 14, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(776, 11, 15, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(785, 2, 16, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(794, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(794, 2, 8, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(794, 11, 18, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(795, 2, 16, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(803, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(803, 2, 19, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(803, 11, 20, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(811, 2, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(815, 2, 21, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(820, 2, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(828, 2, 21, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(832, 2, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(838, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(838, 2, 8, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(838, 11, 22, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(843, 2, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(844, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(844, 2, 19, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(844, 11, 23, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(847, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(847, 2, 8, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(847, 11, 24, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(855, 2, 16, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(856, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(856, 2, 8, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(856, 11, 25, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(864, 1, 13, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(864, 2, 13, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(864, 3, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(864, 11, 26, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(866, 2, 21, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(867, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(867, 2, 8, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(867, 11, 27, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(869, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(869, 2, 8, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(869, 11, 28, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(874, 1, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(874, 2, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(874, 3, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(874, 11, 29, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(887, 2, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(887, 11, 30, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(888, 2, 16, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(889, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(889, 2, 19, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(889, 11, 31, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(890, 2, 21, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40'),
-	(1433, 1, 15, 10, '2025-10-27 01:21:35', '2025-10-27 01:21:35');
+-- Dumping data for table crm_backend_api.lead_products: ~56 rows (approximately)
+INSERT INTO `lead_products` (`lead_id`, `product_id`, `stage_id`, `account_manager_id`, `created_at`, `updated_at`, `contact_id`, `notes`) VALUES
+	(774, 2, 4, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(776, 2, 14, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(776, 11, 15, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(785, 2, 16, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(794, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(794, 2, 8, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(794, 11, 18, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(795, 2, 16, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(803, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(803, 2, 19, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(803, 11, 20, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(811, 2, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(815, 2, 21, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(820, 2, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(828, 2, 21, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(832, 2, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(838, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(838, 2, 8, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(838, 11, 22, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(843, 2, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(844, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(844, 2, 19, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(844, 11, 23, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(847, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(847, 2, 8, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(847, 11, 24, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(855, 2, 16, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(856, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(856, 2, 8, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(856, 11, 25, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(864, 1, 13, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(864, 2, 13, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(864, 3, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(864, 11, 26, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(866, 2, 21, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(867, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(867, 2, 8, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(867, 11, 27, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(869, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(869, 2, 8, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(869, 11, 28, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(874, 1, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(874, 2, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(874, 3, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(874, 11, 29, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(887, 2, 10, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(887, 11, 30, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(888, 2, 16, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(889, 1, 17, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(889, 2, 19, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(889, 11, 31, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(890, 2, 21, NULL, '2025-10-26 05:10:40', '2025-10-26 05:10:40', NULL, NULL),
+	(1433, 1, 14, 10, '2025-10-27 01:21:35', '2025-10-29 06:52:44', NULL, NULL),
+	(1433, 2, 20, 1, '2025-10-29 06:50:55', '2025-10-29 06:52:44', NULL, NULL),
+	(1493, 1, 15, 9, '2025-10-29 06:58:40', '2025-10-29 07:15:45', NULL, NULL),
+	(1493, 2, NULL, 10, '2025-10-29 07:07:34', '2025-10-29 07:15:45', NULL, NULL);
 
 -- Dumping structure for table crm_backend_api.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
@@ -2176,7 +2185,7 @@ CREATE TABLE IF NOT EXISTS `model_has_roles` (
   CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table crm_backend_api.model_has_roles: ~4 rows (approximately)
+-- Dumping data for table crm_backend_api.model_has_roles: ~2 rows (approximately)
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 	(1, 'App\\Models\\User', 1),
 	(2, 'App\\Models\\User', 9);
@@ -2202,7 +2211,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table crm_backend_api.permissions: ~12 rows (approximately)
+-- Dumping data for table crm_backend_api.permissions: ~39 rows (approximately)
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
 	(1, 'users.view', 'web', '2025-10-28 02:44:56', '2025-10-28 02:44:56'),
 	(2, 'users.create', 'web', '2025-10-28 02:44:56', '2025-10-28 02:44:56'),
@@ -2260,13 +2269,13 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
   UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`),
   KEY `personal_access_tokens_expires_at_index` (`expires_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=148 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table crm_backend_api.personal_access_tokens: ~3 rows (approximately)
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
 	(96, 'App\\Models\\User', 12, 'api', '151908529f3dabeb8efc83e87d6a383fa3a978ed4dfbfd5a12d98a54bc31711c', '["*"]', '2025-10-27 03:18:48', NULL, '2025-10-27 03:18:48', '2025-10-27 03:18:48'),
-	(142, 'App\\Models\\User', 1, 'api', '88e12edb90d0e7370f37fac1e3c4b452e074e2326046ef2f8832dafeecaecea8', '["*"]', '2025-10-28 05:55:02', NULL, '2025-10-28 05:55:01', '2025-10-28 05:55:02'),
-	(143, 'App\\Models\\User', 9, 'api', '21448740591bb29de0745220d77c8f73dbcb38abc6bacfc7cc241827142674a3', '["*"]', '2025-10-28 07:11:04', NULL, '2025-10-28 05:55:14', '2025-10-28 07:11:04');
+	(145, 'App\\Models\\User', 9, 'api', '022374303615c73cd4fa380c732b6dc9ccb58eed13c449fda6d1d4d2a1e8ad15', '["*"]', '2025-10-29 01:20:05', NULL, '2025-10-29 00:03:42', '2025-10-29 01:20:05'),
+	(147, 'App\\Models\\User', 1, 'api', 'b86f93db0ca0c8acbefc84619c34847fef5c719b33541d49a0c2b3e40a381c87', '["*"]', '2025-10-29 07:16:29', NULL, '2025-10-29 04:46:53', '2025-10-29 07:16:29');
 
 -- Dumping structure for table crm_backend_api.products
 CREATE TABLE IF NOT EXISTS `products` (
@@ -2297,7 +2306,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
   UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table crm_backend_api.roles: ~5 rows (approximately)
+-- Dumping data for table crm_backend_api.roles: ~2 rows (approximately)
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
 	(1, 'admin', 'web', '2025-10-28 02:44:57', '2025-10-28 02:44:57'),
 	(2, 'sale-manager', 'web', '2025-10-28 03:05:12', '2025-10-28 03:05:12');
@@ -2312,7 +2321,7 @@ CREATE TABLE IF NOT EXISTS `role_has_permissions` (
   CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table crm_backend_api.role_has_permissions: ~21 rows (approximately)
+-- Dumping data for table crm_backend_api.role_has_permissions: ~53 rows (approximately)
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 	(1, 1),
 	(2, 1),
@@ -2354,7 +2363,18 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 	(39, 1),
 	(40, 1),
 	(6, 2),
-	(26, 2),
+	(14, 2),
+	(15, 2),
+	(16, 2),
+	(17, 2),
+	(18, 2),
+	(19, 2),
+	(20, 2),
+	(21, 2),
+	(22, 2),
+	(23, 2),
+	(24, 2),
+	(25, 2),
 	(35, 2);
 
 -- Dumping structure for table crm_backend_api.sale_stages
@@ -2439,7 +2459,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 	(1, 'Admin User', 'admin@gmail.com', NULL, '$2y$12$Vo9tTiu.uQpj.U7g2/rpn.QgWq1WyGbDOvVBVGrs7u.XS.16Bmjdi', NULL, '2025-10-13 02:39:57', '2025-10-13 05:30:17'),
 	(9, 'Shamim Reza', 'shamimreza@revinr.com', NULL, '$2y$12$Vo9tTiu.uQpj.U7g2/rpn.QgWq1WyGbDOvVBVGrs7u.XS.16Bmjdi', 'g7awi0rQ5w81TlUfLkfnrzkiuYuAjIVeLkd6jF2fwugjTENHyDiKhrROta1H', '2025-10-13 05:27:38', '2025-10-27 00:56:13'),
-	(10, 'Ashik', 'ashik@sams.com', NULL, '$2y$12$vg6VmoeZzrx1ZIMuaL1G1uHZmYzANsUDe3Ox5pPjC9xitYp44I7qK', NULL, '2025-10-22 00:48:42', '2025-10-26 06:39:51'),
+	(10, 'Ashik', 'ashik@revinr.com', NULL, '$2y$12$vg6VmoeZzrx1ZIMuaL1G1uHZmYzANsUDe3Ox5pPjC9xitYp44I7qK', NULL, '2025-10-22 00:48:42', '2025-10-26 06:39:51'),
 	(12, 'Shamim Ghani', 'shamimghani@gmail.com', NULL, '$2y$12$L89UnTUw.TnSZ3sZTkEF8.QOJWu29ByIfv5Ji1EwLAy9BnuuBcTWS', NULL, '2025-10-26 00:25:28', '2025-10-26 00:25:28');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
