@@ -23,7 +23,7 @@ class LeadProductController extends Controller
     public function index(Lead $lead): JsonResponse
     {
         $items = $lead->products()
-            ->withPivot(['stage_id', 'account_manager_id'])
+            ->withPivot(['stage_id', 'account_manager_id', 'contact_id', 'notes'])
             ->select('products.id', 'products.name')
             ->orderBy('products.name')
             ->get()
@@ -33,6 +33,8 @@ class LeadProductController extends Controller
                 'pivot'=> [
                     'sales_stage_id'     => $p->pivot->stage_id,
                     'account_manager_id' => $p->pivot->account_manager_id,
+                    'contact_id'         => $p->pivot->contact_id,
+                    'notes'              => $p->pivot->notes
                 ],
             ]);
 
@@ -66,6 +68,9 @@ class LeadProductController extends Controller
             'items.*.product_id'         => ['required', 'integer', 'exists:products,id'],
             'items.*.sales_stage_id'     => ['nullable', 'integer', 'exists:sale_stages,id'],
             'items.*.account_manager_id' => ['nullable', 'integer', 'exists:users,id'],
+            'items.*.contact_id'         => ['nullable', 'integer', 'exists:lead_contacts,id'],
+            'items.*.notes'              => ['nullable'],
+            
         ]);
 
         DB::transaction(function () use ($lead, $data) {
@@ -74,7 +79,17 @@ class LeadProductController extends Controller
                     $it['product_id'] => [
                         'stage_id'            => $it['sales_stage_id']     ?? null,
                         'account_manager_id'  => $it['account_manager_id'] ?? null,
+                        'contact_id'          => $it['contact_id'] ?? null,
+                        'notes'               => $it['notes'] ?? null,
                     ],
+                ]);
+
+                $lead->products()->updateExistingPivot($it['product_id'], [
+                    'contact_id' => $it['contact_id'] ?? null,
+                ]);
+
+                $lead->products()->updateExistingPivot($it['product_id'], [
+                    'notes' => $it['notes'] ?? null,
                 ]);
             }
         });

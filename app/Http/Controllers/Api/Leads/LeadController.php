@@ -27,11 +27,10 @@ class LeadController extends Controller
         $this->middleware('permission:leads.delete')->only(['destroy']);
     }
 
-
     public function index(Request $request): JsonResponse
     {
         $q = Lead::query()
-            ->with(['destination:id,flag,name,iso_3166_2', 'accountManager:id,name'])
+            ->with(['destination:id,flag,name,iso_3166_2', 'accountManager:id,name', 'leadProducts'])
             ->withCount(['contacts', 'comments as notes_count']);
 
         // ---- Existing 'q' (global search) ----
@@ -210,7 +209,7 @@ class LeadController extends Controller
                     $city     = self::n(\Illuminate\Support\Arr::get($row, 'City'));
                     $destRaw  = \Illuminate\Support\Arr::get($row, 'Destination');
 
-                    $destinationId = self::resolveDestinationId($destRaw) ?? 826;
+                    $destinationId = self::resolveDestinationId($destRaw) ?? null;
 
                     if ($leadName === '') {
                         $skips['leads_skipped_for_blank_name'][] = [

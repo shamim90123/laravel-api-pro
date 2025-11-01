@@ -62,3 +62,6 @@ class PermissionSeeder extends Seeder
         app(PermissionRegistrar::class)->forgetCachedPermissions();
     }
 }
+
+// php artisan db:seed --class=PermissionSeeder
+// php artisan permission:cache-reset

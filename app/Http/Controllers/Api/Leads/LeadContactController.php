@@ -22,8 +22,10 @@ class LeadContactController extends Controller
 
     public function index(Lead $lead, Request $request)
     {
-        // Optional: support ?q=search and pagination
-        $query = $lead->contacts()->orderByDesc('is_primary')->orderByDesc('id');
+        $query = $lead->contacts()
+                ->with('products:id,name') // 👈 eager-load products with only id + name
+                ->orderByDesc('is_primary')
+                ->orderByDesc('id');
 
         if ($search = $request->get('q')) {
             $query->where(function ($q) use ($search) {
@@ -46,6 +48,7 @@ class LeadContactController extends Controller
                 'job_title'      => $contact->job_title,
                 'department'     => $contact->department,
                 'primary_status' => (bool) $contact->is_primary,
+                'products'       => $contact->products->pluck('name')->filter()->values(), // 👈 product names array
                 'created_at'     => $contact->created_at,
             ];
         });
