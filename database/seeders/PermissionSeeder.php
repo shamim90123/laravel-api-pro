@@ -62,3 +62,6 @@ class PermissionSeeder extends Seeder
         ]);
     }
 }
+
+// php artisan db:seed --class=PermissionSeeder
+// php artisan permission:cache-reset
