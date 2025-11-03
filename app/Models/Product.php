@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'status'];
+    protected $fillable = ['name', 'status',  'image_url', 'image_path' ];
 
 
     // public function leads()
@@ -19,9 +19,15 @@ class Product extends Model
     // }
 
     public function leads()
-{
-    return $this->belongsToMany(Lead::class, 'lead_products')
-        ->withPivot(['stage_id', 'account_manager_id'])
-        ->withTimestamps();
-}
+    {
+        return $this->belongsToMany(Lead::class, 'lead_products')
+            ->withPivot(['stage_id', 'account_manager_id'])
+            ->withTimestamps();
+    }
+
+
+    public function getImageAttribute()
+    {
+        return $this->image_url ?: null;
+    }
 }

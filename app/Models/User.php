@@ -25,6 +25,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'image_url',
+        'image_path',
     ];
 
     /**
@@ -89,5 +91,11 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token): void
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    // Add image accessor
+    public function getImageAttribute()
+    {
+        return $this->image_url ?: null;
     }
 }

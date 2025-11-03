@@ -30,7 +30,7 @@ class LeadController extends Controller
     public function index(Request $request): JsonResponse
     {
         $q = Lead::query()
-            ->with(['destination:id,flag,name,iso_3166_2', 'accountManager:id,name', 'leadProducts'])
+            ->with(['destination:id,flag,name,iso_3166_2', 'accountManager:id,name,image_url,image_path', 'leadProducts'])
             ->withCount(['contacts', 'comments as notes_count']);
 
         // ---- Existing 'q' (global search) ----

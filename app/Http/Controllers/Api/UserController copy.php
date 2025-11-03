@@ -1,33 +1,23 @@
 <?php
 
+// app/Http/Controllers/Api/UserController.php
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Helpers\UploadHelper;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
-class UserController extends Controller
+
+class UserControllercopy extends Controller
 {
-
-    public function __construct()
-    {
-        // Spatie permission gates per action
-        $this->middleware('permission:products.view')->only(['index', 'show']);
-        $this->middleware('permission:products.create')->only(['store']);
-        $this->middleware('permission:products.update')->only(['update']);
-        $this->middleware('permission:products.delete')->only(['destroy']);
-        $this->middleware('permission:products.toggle-status')->only(['toggleStatus']);
-    }
-
     public function index(Request $request)
     {
         $query = User::query()
-            ->select(['id','name','email','image_url','created_at'])
-            ->with('roles:id,name')
+            ->select(['id','name','email','created_at'])
+            ->with('roles:id,name') // eager-load to avoid N+1
             ->when($request->q, function ($q) use ($request) {
                 $q->where(function ($qq) use ($request) {
                     $qq->where('name','like',"%{$request->q}%")
@@ -44,10 +34,9 @@ class UserController extends Controller
                 'id'         => $u->id,
                 'name'       => $u->name,
                 'email'      => $u->email,
-                'image_url'  => $u->image_url,
                 'created_at' => $u->created_at,
-                'roles'      => $u->roles->pluck('name')->values(),
-                'primary_role' => $u->roles->pluck('name')->first(),
+                'roles'      => $u->roles->pluck('name')->values(), // ['admin', ...]
+                'primary_role' => $u->roles->pluck('name')->first(), // optional
             ];
         });
 
@@ -63,6 +52,7 @@ class UserController extends Controller
         ];
     }
 
+
     public function show(User $user)
     {
         $user->load('roles:id,name');
@@ -71,8 +61,6 @@ class UserController extends Controller
             'id'           => $user->id,
             'name'         => $user->name,
             'email'        => $user->email,
-            'image_url'    => $user->image_url,
-            'image_path'   => $user->image_path,
             'created_at'   => $user->created_at,
             'updated_at'   => $user->updated_at,
             'roles'        => $user->roles->pluck('name')->values(),
@@ -86,33 +74,18 @@ class UserController extends Controller
             'name'     => ['required','string','max:255'],
             'email'    => ['required','email','max:255','unique:users,email'],
             'password' => ['required','string','min:6'],
-            'image'    => ['nullable','image','mimes:jpg,jpeg,png,gif,webp','max:5120'], // 5MB max
+
+            // NEW: accept either `role` (string) or `roles` (array)
             'role'     => ['sometimes','string', Rule::exists('roles','name')->where('guard_name','web')],
             'roles'    => ['sometimes','array'],
             'roles.*'  => ['string', Rule::exists('roles','name')->where('guard_name','web')],
         ]);
 
-        $userData = [
+        $user = User::create([
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => Hash::make($data['password']),
-        ];
-
-        // Handle image upload
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $uploadResult = UploadHelper::uploadImageToS3($request->file('image'), 'users');
-
-            if (!$uploadResult['success']) {
-                return response()->json([
-                    'error' => 'Image upload failed: ' . $uploadResult['error']
-                ], 422);
-            }
-
-            $userData['image_url'] = $uploadResult['url'];
-            $userData['image_path'] = $uploadResult['file_path'];
-        }
-
-        $user = User::create($userData);
+        ]);
 
         // Map `role` -> `roles[]`
         $roles = $data['roles'] ?? (isset($data['role']) ? [$data['role']] : []);
@@ -124,9 +97,8 @@ class UserController extends Controller
             'id'          => $user->id,
             'name'        => $user->name,
             'email'       => $user->email,
-            'image_url'   => $user->image_url,
-            'roles'       => $user->getRoleNames(),
-            'permissions' => $user->getAllPermissions()->pluck('name'),
+            'roles'       => $user->getRoleNames(),                         // array
+            'permissions' => $user->getAllPermissions()->pluck('name'),     // optional
         ], 201);
     }
 
@@ -136,51 +108,21 @@ class UserController extends Controller
             'name'     => ['required','string','max:255'],
             'email'    => ['required','email','max:255', Rule::unique('users','email')->ignore($user->id)],
             'password' => ['nullable','string','min:6'],
-            'image'    => ['nullable','image','mimes:jpg,jpeg,png,gif,webp','max:5120'],
+
+            // NEW: accept either `role` (string) or `roles` (array)
             'role'     => ['sometimes','string', Rule::exists('roles','name')->where('guard_name','web')],
             'roles'    => ['sometimes','array'],
             'roles.*'  => ['string', Rule::exists('roles','name')->where('guard_name','web')],
-            'remove_image' => ['sometimes','boolean'],
         ]);
 
-        $userData = [
+        $user->fill([
             'name'  => $data['name'],
             'email' => $data['email'],
-        ];
-
-        // Handle password update
+        ]);
         if (!empty($data['password'])) {
-            $userData['password'] = Hash::make($data['password']);
+            $user->password = Hash::make($data['password']);
         }
-
-        // Handle image removal
-        if ($request->boolean('remove_image')) {
-            if ($user->image_path) {
-                UploadHelper::deleteImageFromS3($user->image_path);
-            }
-            $userData['image_url'] = null;
-            $userData['image_path'] = null;
-        }
-        // Handle new image upload
-        else if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            // Delete old image if exists
-            if ($user->image_path) {
-                UploadHelper::deleteImageFromS3($user->image_path);
-            }
-
-            $uploadResult = UploadHelper::uploadImageToS3($request->file('image'), 'users');
-
-            if (!$uploadResult['success']) {
-                return response()->json([
-                    'error' => 'Image upload failed: ' . $uploadResult['error']
-                ], 422);
-            }
-
-            $userData['image_url'] = $uploadResult['url'];
-            $userData['image_path'] = $uploadResult['file_path'];
-        }
-
-        $user->update($userData);
+        $user->save();
 
         if (array_key_exists('roles', $data) || array_key_exists('role', $data)) {
             $roles = $data['roles'] ?? (isset($data['role']) ? [$data['role']] : []);
@@ -188,30 +130,25 @@ class UserController extends Controller
         }
 
         return [
-            'id'        => $user->id,
-            'name'      => $user->name,
-            'email'     => $user->email,
-            'image_url' => $user->image_url,
-            'roles'     => $user->getRoleNames(),
+            'id'    => $user->id,
+            'name'  => $user->name,
+            'email' => $user->email,
+            'roles' => $user->getRoleNames(),
         ];
     }
 
     public function destroy(User $user)
     {
         try {
-            // prevent deleting yourself
+            // prevent deleting yourself (optional)
             if (auth()->id() === $user->id) {
                 return response()->json(['message' => 'You cannot delete your own account.'], 403);
-            }
-
-            // Delete user image from S3 if exists
-            if ($user->image_path) {
-                UploadHelper::deleteImageFromS3($user->image_path);
             }
 
             $user->delete();
 
             return response()->json(['message' => 'User deleted successfully.'], 200);
+            // or return response()->noContent();  // HTTP 204, if you prefer empty body
         } catch (\Throwable $e) {
             return response()->json([
                 'message' => 'Failed to delete user.',
@@ -219,4 +156,5 @@ class UserController extends Controller
             ], 500);
         }
     }
+
 }
