@@ -27,7 +27,7 @@ class LeadController extends Controller
         $this->middleware('permission:leads.delete')->only(['destroy']);
     }
 
-   public function index(Request $request): JsonResponse
+    public function index(Request $request): JsonResponse
     {
         $q = Lead::query()
             ->with(['destination:id,flag,name,iso_3166_2', 'accountManager:id,name', 'leadProducts'])
