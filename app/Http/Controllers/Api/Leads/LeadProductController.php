@@ -14,7 +14,7 @@ class LeadProductController extends Controller
     public function index(Lead $lead): JsonResponse
     {
         $items = $lead->products()
-            ->withPivot(['stage_id', 'account_manager_id', 'contact_id', 'notes'])
+            ->withPivot(['stage_id', 'account_manager_id', 'contact_id', 'notes', 'demo_book_id', 'demo_book_date'])
             ->select('products.id', 'products.name')
             ->orderBy('products.name')
             ->get()
@@ -25,7 +25,10 @@ class LeadProductController extends Controller
                     'sales_stage_id'     => $p->pivot->stage_id,
                     'account_manager_id' => $p->pivot->account_manager_id,
                     'contact_id'         => $p->pivot->contact_id,
-                    'notes'              => $p->pivot->notes
+                    'notes'              => $p->pivot->notes,
+                    'demo_book_id'       => $p->pivot->demo_book_id,
+                    'demo_book_date'       => $p->pivot->demo_book_date,
+
                 ],
             ]);
 
@@ -61,7 +64,10 @@ class LeadProductController extends Controller
             'items.*.account_manager_id' => ['nullable', 'integer', 'exists:users,id'],
             'items.*.contact_id'         => ['nullable', 'integer', 'exists:lead_contacts,id'],
             'items.*.notes'              => ['nullable'],
-            
+            'items.*.demo_book_id'       => ['nullable'],
+            'items.*.demo_book_date'       => ['nullable'],
+
+
         ]);
 
         DB::transaction(function () use ($lead, $data) {
@@ -81,6 +87,14 @@ class LeadProductController extends Controller
 
                 $lead->products()->updateExistingPivot($it['product_id'], [
                     'notes' => $it['notes'] ?? null,
+                ]);
+
+                $lead->products()->updateExistingPivot($it['product_id'], [
+                    'demo_book_id' => $it['demo_book_id'] ?? null,
+                ]);
+
+                $lead->products()->updateExistingPivot($it['product_id'], [
+                    'demo_book_date' => $it['demo_book_date'] ?? null,
                 ]);
             }
         });

@@ -18,7 +18,7 @@ use Carbon\Carbon;
 
 class LeadController extends Controller
 {
-   public function index(Request $request): JsonResponse
+    public function index(Request $request): JsonResponse
     {
         $q = Lead::query()
             ->with(['destination:id,flag,name,iso_3166_2', 'accountManager:id,name', 'leadProducts'])

@@ -19,6 +19,7 @@ class LeadProduct extends Model
         'account_manager_id',
         'notes',
         'contact_id',
+        'demo_book_id',
 
     ];
 
@@ -40,7 +41,7 @@ class LeadProduct extends Model
     {
         return $this->belongsTo(SaleStage::class, 'stage_id');
     }
-    
+
     public function contact()
     {
         return $this->belongsTo(LeadContact::class, 'contact_id');
