@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 06, 2025 at 12:57 AM
+-- Generation Time: Nov 16, 2025 at 04:22 PM
 -- Server version: 8.0.44
--- PHP Version: 7.4.33
+-- PHP Version: 8.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `backend_sams_global`
+-- Database: `react_laravel_pro`
 --
 
 -- --------------------------------------------------------
@@ -38,7 +38,7 @@ CREATE TABLE `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('laravel-cache-spatie.permission.cache', 'a:3:{s:5:\"alias\";a:4:{s:1:\"a\";s:2:\"id\";s:1:\"b\";s:4:\"name\";s:1:\"c\";s:10:\"guard_name\";s:1:\"r\";s:5:\"roles\";}s:11:\"permissions\";a:39:{i:0;a:4:{s:1:\"a\";i:1;s:1:\"b\";s:10:\"users.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:1;a:4:{s:1:\"a\";i:2;s:1:\"b\";s:12:\"users.create\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:2;a:4:{s:1:\"a\";i:3;s:1:\"b\";s:12:\"users.update\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:3;a:4:{s:1:\"a\";i:4;s:1:\"b\";s:12:\"users.delete\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:4;a:4:{s:1:\"a\";i:5;s:1:\"b\";s:18:\"users.assign-roles\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:5;a:4:{s:1:\"a\";i:6;s:1:\"b\";s:10:\"leads.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:6;a:4:{s:1:\"a\";i:7;s:1:\"b\";s:12:\"leads.create\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:7;a:4:{s:1:\"a\";i:8;s:1:\"b\";s:12:\"leads.update\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:8;a:4:{s:1:\"a\";i:9;s:1:\"b\";s:12:\"leads.delete\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:9;a:4:{s:1:\"a\";i:10;s:1:\"b\";s:28:\"leads.assign-account-manager\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:10;a:4:{s:1:\"a\";i:11;s:1:\"b\";s:17:\"leads.bulk-import\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:11;a:4:{s:1:\"a\";i:12;s:1:\"b\";s:25:\"leads.bulk-comment-import\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:12;a:4:{s:1:\"a\";i:13;s:1:\"b\";s:19:\"leads.update-status\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:13;a:4:{s:1:\"a\";i:14;s:1:\"b\";s:18:\"lead-contacts.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:14;a:4:{s:1:\"a\";i:15;s:1:\"b\";s:20:\"lead-contacts.upsert\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:15;a:4:{s:1:\"a\";i:16;s:1:\"b\";s:20:\"lead-contacts.delete\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:16;a:4:{s:1:\"a\";i:17;s:1:\"b\";s:25:\"lead-contacts.set-primary\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:17;a:4:{s:1:\"a\";i:18;s:1:\"b\";s:18:\"lead-comments.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:18;a:4:{s:1:\"a\";i:19;s:1:\"b\";s:20:\"lead-comments.create\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:19;a:4:{s:1:\"a\";i:20;s:1:\"b\";s:20:\"lead-comments.update\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:20;a:4:{s:1:\"a\";i:21;s:1:\"b\";s:20:\"lead-comments.delete\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:21;a:4:{s:1:\"a\";i:22;s:1:\"b\";s:18:\"lead-products.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:22;a:4:{s:1:\"a\";i:23;s:1:\"b\";s:20:\"lead-products.assign\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:23;a:4:{s:1:\"a\";i:24;s:1:\"b\";s:25:\"lead-products.bulk-update\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:24;a:4:{s:1:\"a\";i:25;s:1:\"b\";s:13:\"products.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:25;a:4:{s:1:\"a\";i:26;s:1:\"b\";s:15:\"products.create\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:26;a:4:{s:1:\"a\";i:27;s:1:\"b\";s:15:\"products.update\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:27;a:4:{s:1:\"a\";i:28;s:1:\"b\";s:15:\"products.delete\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:28;a:4:{s:1:\"a\";i:29;s:1:\"b\";s:22:\"products.toggle-status\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:29;a:4:{s:1:\"a\";i:30;s:1:\"b\";s:11:\"stages.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:30;a:4:{s:1:\"a\";i:31;s:1:\"b\";s:13:\"stages.create\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:31;a:4:{s:1:\"a\";i:32;s:1:\"b\";s:13:\"stages.update\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:32;a:4:{s:1:\"a\";i:33;s:1:\"b\";s:13:\"stages.delete\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:33;a:4:{s:1:\"a\";i:34;s:1:\"b\";s:20:\"stages.toggle-status\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:34;a:4:{s:1:\"a\";i:35;s:1:\"b\";s:10:\"roles.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:35;a:4:{s:1:\"a\";i:36;s:1:\"b\";s:12:\"roles.create\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:36;a:4:{s:1:\"a\";i:37;s:1:\"b\";s:12:\"roles.update\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:37;a:4:{s:1:\"a\";i:38;s:1:\"b\";s:12:\"roles.delete\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:38;a:4:{s:1:\"a\";i:39;s:1:\"b\";s:14:\"dashboard.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}}s:5:\"roles\";a:1:{i:0;a:3:{s:1:\"a\";i:1;s:1:\"b\";s:5:\"admin\";s:1:\"c\";s:3:\"web\";}}}', 1762476174);
+('laravel-cache-spatie.permission.cache', 'a:3:{s:5:\"alias\";a:4:{s:1:\"a\";s:2:\"id\";s:1:\"b\";s:4:\"name\";s:1:\"c\";s:10:\"guard_name\";s:1:\"r\";s:5:\"roles\";}s:11:\"permissions\";a:19:{i:0;a:4:{s:1:\"a\";i:1;s:1:\"b\";s:10:\"users.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:1;a:4:{s:1:\"a\";i:2;s:1:\"b\";s:12:\"users.create\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:2;a:4:{s:1:\"a\";i:3;s:1:\"b\";s:12:\"users.update\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:3;a:4:{s:1:\"a\";i:4;s:1:\"b\";s:12:\"users.delete\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:4;a:4:{s:1:\"a\";i:5;s:1:\"b\";s:18:\"users.assign-roles\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:5;a:4:{s:1:\"a\";i:25;s:1:\"b\";s:13:\"products.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:6;a:4:{s:1:\"a\";i:26;s:1:\"b\";s:15:\"products.create\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:7;a:4:{s:1:\"a\";i:27;s:1:\"b\";s:15:\"products.update\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:8;a:4:{s:1:\"a\";i:28;s:1:\"b\";s:15:\"products.delete\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:9;a:4:{s:1:\"a\";i:29;s:1:\"b\";s:22:\"products.toggle-status\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:10;a:4:{s:1:\"a\";i:30;s:1:\"b\";s:11:\"stages.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:11;a:4:{s:1:\"a\";i:31;s:1:\"b\";s:13:\"stages.create\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:12;a:4:{s:1:\"a\";i:32;s:1:\"b\";s:13:\"stages.update\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:13;a:4:{s:1:\"a\";i:33;s:1:\"b\";s:13:\"stages.delete\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:14;a:4:{s:1:\"a\";i:34;s:1:\"b\";s:20:\"stages.toggle-status\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:15;a:4:{s:1:\"a\";i:35;s:1:\"b\";s:10:\"roles.view\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:16;a:4:{s:1:\"a\";i:36;s:1:\"b\";s:12:\"roles.create\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:17;a:4:{s:1:\"a\";i:37;s:1:\"b\";s:12:\"roles.update\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}i:18;a:4:{s:1:\"a\";i:38;s:1:\"b\";s:12:\"roles.delete\";s:1:\"c\";s:3:\"web\";s:1:\"r\";a:1:{i:0;i:1;}}}s:5:\"roles\";a:1:{i:0;a:3:{s:1:\"a\";i:1;s:1:\"b\";s:5:\"admin\";s:1:\"c\";s:3:\"web\";}}}', 1763396423);
 
 -- --------------------------------------------------------
 
@@ -649,11 +649,8 @@ CREATE TABLE `lead_products` (
 
 INSERT INTO `lead_products` (`lead_id`, `product_id`, `stage_id`, `account_manager_id`, `contact_id`, `notes`, `created_at`, `updated_at`) VALUES
 (6, 2, NULL, NULL, 0, '', '2025-10-19 06:17:42', '2025-10-19 06:17:42'),
-(7, 3, NULL, NULL, 0, '', '2025-10-22 23:43:55', '2025-10-22 23:43:55'),
-(8, 1, 4, 10, 0, '', '2025-10-23 03:03:46', '2025-10-23 03:03:47'),
+(8, 1, NULL, 10, 0, '', '2025-10-23 03:03:46', '2025-10-23 03:03:47'),
 (8, 2, 1, 10, 0, '', '2025-10-23 03:03:46', '2025-10-23 03:03:47'),
-(8, 3, 3, 10, 0, '', '2025-10-23 03:03:46', '2025-10-23 03:03:47'),
-(8, 4, 1, 10, 0, '', '2025-10-23 03:03:46', '2025-10-23 03:03:47'),
 (21, 1, 1, 10, 36, 'gh', '2025-11-01 09:35:26', '2025-11-01 09:35:26');
 
 -- --------------------------------------------------------
@@ -749,25 +746,6 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (3, 'users.update', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
 (4, 'users.delete', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
 (5, 'users.assign-roles', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(6, 'leads.view', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(7, 'leads.create', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(8, 'leads.update', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(9, 'leads.delete', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(10, 'leads.assign-account-manager', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(11, 'leads.bulk-import', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(12, 'leads.bulk-comment-import', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(13, 'leads.update-status', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(14, 'lead-contacts.view', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(15, 'lead-contacts.upsert', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(16, 'lead-contacts.delete', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(17, 'lead-contacts.set-primary', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(18, 'lead-comments.view', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(19, 'lead-comments.create', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(20, 'lead-comments.update', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(21, 'lead-comments.delete', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(22, 'lead-products.view', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(23, 'lead-products.assign', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(24, 'lead-products.bulk-update', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
 (25, 'products.view', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
 (26, 'products.create', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
 (27, 'products.update', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
@@ -781,8 +759,7 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (35, 'roles.view', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
 (36, 'roles.create', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
 (37, 'roles.update', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(38, 'roles.delete', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09'),
-(39, 'dashboard.view', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09');
+(38, 'roles.delete', 'web', '2025-11-02 18:59:09', '2025-11-02 18:59:09');
 
 -- --------------------------------------------------------
 
@@ -809,7 +786,7 @@ CREATE TABLE `personal_access_tokens` (
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `expires_at`, `created_at`, `updated_at`) VALUES
 (57, 'App\\Models\\User', 9, 'api', '81c5213b375f5883b0e0db87cd9ea943af080a312242a40b61d14ab68c9f0959', '[\"*\"]', '2025-10-21 00:46:12', NULL, '2025-10-21 00:29:04', '2025-10-21 00:46:12'),
-(96, 'App\\Models\\User', 1, 'api', 'd8b7a4ad8ca5dbfdcbbfd658d2fe30a27269dd322d653ec72842b39ff8a8a57c', '[\"*\"]', '2025-11-05 18:51:16', NULL, '2025-11-05 18:51:16', '2025-11-05 18:51:16');
+(100, 'App\\Models\\User', 1, 'api', '971d8b2ee39e5004d2b2c0a950d7f0d7aa10ed74a3689292e839711f5f6edb99', '[\"*\"]', '2025-11-16 10:21:24', NULL, '2025-11-16 10:05:15', '2025-11-16 10:21:24');
 
 -- --------------------------------------------------------
 
@@ -832,10 +809,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `status`, `image_url`, `image_path`, `created_at`, `updated_at`) VALUES
-(1, 'SAMS Manage', 'active', NULL, NULL, '2025-10-14 01:03:35', '2025-10-14 01:19:31'),
-(2, 'SAMS Pay', 'active', NULL, NULL, '2025-10-14 01:03:58', '2025-10-14 01:19:41'),
-(3, 'SAMS Perform', 'active', NULL, NULL, '2025-10-14 01:05:53', '2025-10-14 01:19:57'),
-(4, 'SAMS Pay Management', 'active', NULL, NULL, '2025-10-14 01:07:04', '2025-10-14 01:20:26');
+(1, 'Demo Manage', 'active', NULL, NULL, '2025-10-14 01:03:35', '2025-11-16 10:18:22'),
+(2, 'Demo Pay', 'active', NULL, NULL, '2025-10-14 01:03:58', '2025-11-16 10:18:30');
 
 -- --------------------------------------------------------
 
@@ -879,25 +854,6 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (3, 1),
 (4, 1),
 (5, 1),
-(6, 1),
-(7, 1),
-(8, 1),
-(9, 1),
-(10, 1),
-(11, 1),
-(12, 1),
-(13, 1),
-(14, 1),
-(15, 1),
-(16, 1),
-(17, 1),
-(18, 1),
-(19, 1),
-(20, 1),
-(21, 1),
-(22, 1),
-(23, 1),
-(24, 1),
 (25, 1),
 (26, 1),
 (27, 1),
@@ -911,8 +867,7 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (35, 1),
 (36, 1),
 (37, 1),
-(38, 1),
-(39, 1);
+(38, 1);
 
 -- --------------------------------------------------------
 
@@ -934,14 +889,7 @@ CREATE TABLE `sale_stages` (
 
 INSERT INTO `sale_stages` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Demo Book', 'active', '2025-10-14 02:56:27', '2025-10-23 04:45:41'),
-(3, 'Want to know more', 'active', '2025-10-14 02:57:24', '2025-10-23 04:45:57'),
-(4, 'Reached Out', 'active', '2025-10-14 03:06:49', '2025-10-23 04:45:31'),
-(8, 'Sold', 'active', '2025-10-23 04:46:07', '2025-10-23 04:46:07'),
-(9, 'Awaiting Contact', 'active', '2025-10-23 04:46:22', '2025-10-23 04:46:22'),
-(10, 'Demo Done', 'active', '2025-10-23 04:46:32', '2025-10-23 04:46:32'),
-(11, 'Not Interest', 'active', '2025-10-23 04:46:47', '2025-10-23 04:46:47'),
-(12, 'Sold', 'active', '2025-10-23 04:47:13', '2025-10-23 04:47:13'),
-(13, 'Verbal Confirmation', 'active', '2025-10-23 04:47:34', '2025-10-23 04:47:34');
+(12, 'Sold', 'active', '2025-10-23 04:47:13', '2025-10-23 04:47:13');
 
 -- --------------------------------------------------------
 
@@ -965,6 +913,7 @@ CREATE TABLE `sessions` (
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
 ('1PRalAkMlByLgRh2sHDJ05rlPTXFFivWR3ta2ol6', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Herd/1.22.3 Chrome/120.0.6099.291 Electron/28.2.5 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieHRqQmszSDdLaHhtWUpaTGxBWXV5ZnYwZzh5c3lUaG1MSkFYdTdhWSI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly9jcm0tYmFja2VuZC1hcGkudGVzdC8/aGVyZD1wcmV2aWV3IjtzOjU6InJvdXRlIjtOO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1762214785),
 ('4juXFPgYhd9OkPjfHh3brTfKw2ius8rVe3MaJUoP', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Herd/1.22.3 Chrome/120.0.6099.291 Electron/28.2.5 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiNFBoR1JtMlZiQnBHUG9FdmRRUEIzZldyVmdQM1poYmVkbGpwY3hZSiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly9jcm0tYmFja2VuZC1hcGkudGVzdC8/aGVyZD1wcmV2aWV3IjtzOjU6InJvdXRlIjtOO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1762214807),
+('4Q5aRHuAEhFLhU78bgzf2oOlaqUmsQ5xo8OGp1wq', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRlpFSjRCbEdmRU1DQnkwdEdLUU5CZTlUbURHWE9hVUE1dlpIQmZuSCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly9sYXJhdmVsLWFwaS1wcm8udGVzdCI7czo1OiJyb3V0ZSI7Tjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1762391411),
 ('6bgJNhu8yW5SEw32BtjF7DAy1DXm8Pm81eXDoMR4', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Herd/1.22.3 Chrome/120.0.6099.291 Electron/28.2.5 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaGc5bWFLR1dsYTVhODVTMWI5WVNUSFZFZmQ3YzVTVDB3U2pQM3hhbiI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly9jcm0tYmFja2VuZC1hcGkudGVzdC8/aGVyZD1wcmV2aWV3IjtzOjU6InJvdXRlIjtOO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1762214648),
 ('81SKvIU3mXL3J5Z6iDjVeaAgNbEpFessHnkYpJGF', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Herd/1.22.3 Chrome/120.0.6099.291 Electron/28.2.5 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiV3dnM0tUSUJzWjRSd0VQaWxrTDVYaklvY1dBdDRhUU5xZGZMYndRQyI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly9jcm0tYmFja2VuZC1hcGkudGVzdC8/aGVyZD1wcmV2aWV3IjtzOjU6InJvdXRlIjtOO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1762215664),
 ('9YVcPJ8RH5qX9J0YthNxtYuxcBUQxhB8U3SxuIKX', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Herd/1.22.3 Chrome/120.0.6099.291 Electron/28.2.5 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiODdDejNCaEp3Y0JqWUYzWTM3QkdQbHY3U3Z5ZDcwVkdxUFlXODd6dCI7czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly9jcm0tYmFja2VuZC1hcGkudGVzdC8/aGVyZD1wcmV2aWV3IjtzOjU6InJvdXRlIjtOO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1762215578),
@@ -999,8 +948,8 @@ CREATE TABLE `users` (
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `image_path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1249,7 +1198,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `products`
