@@ -21,19 +21,6 @@ class PermissionSeeder extends Seeder
             // Users
             'users.view','users.create','users.update','users.delete','users.assign-roles',
 
-            // Leads
-            'leads.view','leads.create','leads.update','leads.delete',
-            'leads.assign-account-manager','leads.bulk-import','leads.bulk-comment-import','leads.update-status',
-
-            // Lead Contacts
-            'lead-contacts.view','lead-contacts.upsert','lead-contacts.delete','lead-contacts.set-primary',
-
-            // Lead Comments
-            'lead-comments.view','lead-comments.create','lead-comments.update','lead-comments.delete',
-
-            // Lead Products
-            'lead-products.view','lead-products.assign','lead-products.bulk-update',
-
             // Products
             'products.view','products.create','products.update','products.delete','products.toggle-status',
 
@@ -42,6 +29,8 @@ class PermissionSeeder extends Seeder
 
             // Roles
             'roles.view','roles.create','roles.update','roles.delete',
+
+            'menu.view','menu.create','menu.update','menu.delete', 'menu.toggle-status',
 
             // Dashboard
             'dashboard.view',

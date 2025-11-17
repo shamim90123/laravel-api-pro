@@ -3,21 +3,17 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-// Controllers
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Auth\PasswordController;
+use App\Http\Controllers\Api\Auth\RoleController;
+use App\Http\Controllers\Api\Auth\PermissionController;
+use App\Http\Controllers\Api\Auth\UserController;
+use App\Http\Controllers\Api\Config\SaleStageController;
+use App\Http\Controllers\Api\Config\ProductController;
+use App\Http\Controllers\Api\Config\MenuController;
 use App\Http\Controllers\Api\DashboardController;
-use App\Http\Controllers\Api\Leads\LeadController;
-use App\Http\Controllers\Api\Leads\LeadCommentController;
-use App\Http\Controllers\Api\Leads\LeadProductController;
-use App\Http\Controllers\Api\Leads\LeadContactController;
-use App\Http\Controllers\Api\SaleStageController;
-use App\Http\Controllers\Api\ProductController;
-use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\ImporterController;
 use App\Http\Controllers\Api\LookupController;
-use App\Http\Controllers\Api\PasswordController;
-use App\Http\Controllers\Api\Leads\RoleController;
-use App\Http\Controllers\Api\DemoBookController;
-use App\Http\Controllers\Api\PermissionController;
 
 
 /*
@@ -46,120 +42,80 @@ Route::prefix('v1')->group(function () {
     Route::post('register', [AuthController::class, 'register']);
     Route::post('login',    [AuthController::class, 'login']);
 
-
-
-    // Public (no auth)
-    Route::post('password/forgot', [PasswordController::class, 'forgot'])
-        ->middleware('throttle:5,1'); // 5 req/min
-    Route::post('password/reset',  [PasswordController::class, 'reset'])
-        ->middleware('throttle:5,1');
-
-    // Authenticated
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::post('password/change', [PasswordController::class, 'change']);
-    });
-
-
+    Route::post('password/forgot', [PasswordController::class, 'forgot'])->middleware('throttle:5,1'); // 5 req/min
+    Route::post('password/reset',  [PasswordController::class, 'reset'])->middleware('throttle:5,1');
+    
+    
     /*
     |----------------------------------------------------------------------
     | Authenticated routes
     |----------------------------------------------------------------------
     */
     Route::middleware('auth:sanctum')->group(function () {
-
-        Route::get('/permissions-list', [PermissionController::class, 'index']);
-        Route::get('/permissions/{id}', [PermissionController::class, 'show']);
-        Route::post('/permissions', [PermissionController::class, 'store']);
-        Route::put('/permissions/{id}', [PermissionController::class, 'update']);
-        Route::delete('/permissions/{id}', [PermissionController::class, 'destroy']);
+        
+        Route::get('/permissions-list',             [PermissionController::class, 'index']);
+        Route::get('/permissions/{id}',             [PermissionController::class, 'show']);
+        Route::post('/permissions',                 [PermissionController::class, 'store']);
+        Route::put('/permissions/{id}',             [PermissionController::class, 'update']);
+        Route::delete('/permissions/{id}',          [PermissionController::class, 'destroy']);
+        Route::post('password/change',              [PasswordController::class, 'change']);
 
         // Additional permission routes
-        Route::get('permissions-grouped', [PermissionController::class, 'grouped']);
-        Route::post('roles/{role}/permissions', [PermissionController::class, 'syncToRole']);
+        Route::get('permissions-grouped',           [PermissionController::class, 'grouped']);
+        Route::post('roles/{role}/permissions',     [PermissionController::class, 'syncToRole']);
 
-        Route::get('/permissions', [RoleController::class, 'permissionsIndex']); // flat names
-        Route::get('/roles/names', [RoleController::class, 'names']);           // plain role names
-        Route::get('/roles', [RoleController::class, 'index']);
-        Route::get('/roles/{role}', [RoleController::class, 'show']);
-        Route::post('/roles', [RoleController::class, 'store']);
-        Route::put('/roles/{role}', [RoleController::class, 'update']);
-        Route::delete('/roles/{role}', [RoleController::class, 'destroy']);
+        Route::get('/permissions',                  [RoleController::class, 'permissionsIndex']); // flat names
+        Route::get('/roles/names',                  [RoleController::class, 'names']);           // plain role names
+        Route::get('/roles',                        [RoleController::class, 'index']);
+        Route::get('/roles/{role}',                 [RoleController::class, 'show']);
+        Route::post('/roles',                       [RoleController::class, 'store']);
+        Route::put('/roles/{role}',                 [RoleController::class, 'update']);
+        Route::delete('/roles/{role}',              [RoleController::class, 'destroy']);
+
+
+         Route::post('/leads/bulk-importer',        [ImporterController::class, 'bulkImporter']);
 
         // ---- Auth session ----
-        Route::get('me',      [AuthController::class, 'me']);
-        Route::post('logout', [AuthController::class, 'logout']);
+        Route::get('me',                            [AuthController::class, 'me']);
+        Route::post('logout',                       [AuthController::class, 'logout']);
 
         // ---- Dashboard / Stats ----
-        Route::get('stats/overview', [DashboardController::class, 'overview']);
+        Route::get('stats/overview',                [DashboardController::class, 'overview']);
 
         // ---- Users ----
-        Route::apiResource('users', UserController::class);
-        Route::get('user-list', [UserController::class, 'userList']);
-        Route::post('users/{user}', [UserController::class, 'update']); // Add this for file uploads
-
-        // Route::apiResource('leads', LeadController::class);
-
-        Route::apiResource('leads', LeadController::class)
-        ->middlewareFor(['index','show'], 'permission:leads.view')
-        ->middlewareFor('store',  'permission:leads.create')
-        ->middlewareFor('update', 'permission:leads.update')
-        ->middlewareFor('destroy','permission:leads.delete');
-
-        Route::post('leads/account-manager/{lead}', [LeadController::class, 'assignAccountManager']);
-        Route::post('/leads/bulk-importer',    [LeadController::class, 'bulkImporter']);
-        Route::post('/leads/bulk-comment-importer',    [LeadController::class, 'bulkCommentImporter']);
-        Route::patch('leads/{lead}/status', [LeadController::class, 'updateStatus']);
-
-
-        // Contacts
-        Route::get('leads/{lead}/contacts',             [LeadContactController::class, 'index']);
-        Route::post('leads/{lead}/contacts',            [LeadContactController::class, 'store_update']);
-        Route::delete('contacts/{contact}',             [LeadContactController::class, 'destroy']);
-        Route::post('contacts/{contact}/primary',       [LeadContactController::class, 'setPrimary']);
-
-
-        // Comments
-        Route::get('leads/{lead}/comments',              [LeadCommentController::class, 'index']);
-        Route::post('leads/{lead}/comments',             [LeadCommentController::class, 'store']);
-        Route::delete('leads/{lead}/comments/{comment}', [LeadCommentController::class, 'destroy']);
-        Route::match(['patch', 'put'], 'leads/{lead}/comments/{comment}', [LeadCommentController::class, 'update']);
-
-
-        // Lead ↔ Products
-        Route::get('leads/{lead}/products',            [LeadProductController::class, 'index']);
-        Route::put('leads/{lead}/products',            [LeadProductController::class, 'assign']);
-        Route::post('leads/{lead}/products',           [LeadProductController::class, 'assign']); // legacy
-        Route::put('leads/{lead}/products/bulk',       [LeadProductController::class, 'bulkUpdate']);
-        // Route::put('leads/{lead}/products/{product}',  [LeadProductController::class, 'updateSingle']);
+        Route::apiResource('users',                 UserController::class);
+        Route::get('user-list',                     [UserController::class, 'userList']);
+        Route::post('users/{user}',                 [UserController::class, 'update']); // Add this for file uploads
 
         // Lookups
-        Route::get('countries', [LookupController::class, 'countries']);
+        Route::get('countries',                     [LookupController::class, 'countries']);
 
         // ---- Products ----
-        Route::get('products',                 [ProductController::class, 'index']);
-        Route::post('products',                [ProductController::class, 'store']);
-        Route::get('products/{id}',            [ProductController::class, 'show']);
-        Route::put('products/{id}',            [ProductController::class, 'update']);
-        Route::patch('products/{id}/status',   [ProductController::class, 'toggleStatus']);
-        Route::delete('products/{id}',         [ProductController::class, 'destroy']);
-        Route::post('products/{id}', [ProductController::class, 'update']); // Add this
-
+        Route::get('products',                      [ProductController::class, 'index']);
+        Route::post('products',                     [ProductController::class, 'store']);
+        Route::get('products/{id}',                 [ProductController::class, 'show']);
+        Route::put('products/{id}',                 [ProductController::class, 'update']);
+        Route::patch('products/{id}/status',        [ProductController::class, 'toggleStatus']);
+        Route::delete('products/{id}',              [ProductController::class, 'destroy']);
+        Route::post('products/{id}',                [ProductController::class, 'update']); // Add this
 
         // ---- Lead Stages ----
-        Route::get('lead_stages',                 [SaleStageController::class, 'index']);
-        Route::post('lead_stages',                [SaleStageController::class, 'store']);
-        Route::get('lead_stages/{id}',            [SaleStageController::class, 'show']);
-        Route::put('lead_stages/{id}',            [SaleStageController::class, 'update']);
-        Route::patch('lead_stages/{id}/status',   [SaleStageController::class, 'toggleStatus']);
-        Route::delete('lead_stages/{id}',         [SaleStageController::class, 'destroy']);
+        Route::get('lead_stages',                   [SaleStageController::class, 'index']);
+        Route::post('lead_stages',                  [SaleStageController::class, 'store']);
+        Route::get('lead_stages/{id}',              [SaleStageController::class, 'show']);
+        Route::put('lead_stages/{id}',              [SaleStageController::class, 'update']);
+        Route::patch('lead_stages/{id}/status',     [SaleStageController::class, 'toggleStatus']);
+        Route::delete('lead_stages/{id}',           [SaleStageController::class, 'destroy']);
 
-        // ---- demo book ----
-        Route::get('demo_books',                 [DemoBookController::class, 'index']);
-        Route::post('demo_books',                [DemoBookController::class, 'store']);
-        Route::get('demo_books/{id}',            [DemoBookController::class, 'show']);
-        Route::put('demo_books/{id}',            [DemoBookController::class, 'update']);
-        Route::patch('demo_books/{id}/status',   [DemoBookController::class, 'toggleStatus']);
-        Route::delete('demo_books/{id}',         [DemoBookController::class, 'destroy']);
+
+        // ---- Menus ----
+        Route::get('menus/parents',                 [MenuController::class, 'parents']);
+        Route::get('menus',                         [MenuController::class, 'index']);
+        Route::post('menus',                        [MenuController::class, 'store']);
+        Route::get('menus/{id}',                    [MenuController::class, 'show']);
+        Route::put('menus/{id}',                    [MenuController::class, 'update']);
+        Route::patch('menus/{id}/status', [MenuController::class, 'toggleStatus']);
+        Route::delete('menus/{id}',                 [MenuController::class, 'destroy']);
 
     });
 });

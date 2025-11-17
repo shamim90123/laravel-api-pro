@@ -1,6 +1,6 @@
 <?php
 // app/Http/Controllers/Api/RoleController.php
-namespace App\Http\Controllers\Api\Leads;
+namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

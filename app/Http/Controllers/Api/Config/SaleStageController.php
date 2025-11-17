@@ -1,16 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Config;
+
 use App\Http\Controllers\Controller;
-use App\Models\DemoBook;
+use App\Models\SaleStage;
 use Illuminate\Http\Request;
 
-class DemoBookController extends Controller
+class SaleStageController extends Controller
 {
+
+    public function __construct()
+    {
+        // Spatie permission gates per action
+        $this->middleware('permission:stages.view')->only(['index', 'show']);
+        $this->middleware('permission:stages.create')->only(['store']);
+        $this->middleware('permission:stages.update')->only(['update']);
+        $this->middleware('permission:stages.delete')->only(['destroy']);
+        $this->middleware('permission:stages.toggle-status')->only(['toggleStatus']);
+    }
+
     // Get all sale_stages
     public function index()
     {
-        $sale_stages = DemoBook::orderBy('name', 'asc')->get();
+        $sale_stages = SaleStage::orderBy('name', 'asc')->get();
         return response()->json($sale_stages);
     }
 
@@ -20,10 +32,9 @@ class DemoBookController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'status' => 'in:active,inactive',
-            'date_require' => 'boolean',
         ]);
 
-        $leadStage = DemoBook::create([
+        $leadStage = SaleStage::create([
             'name' => $request->name,
             'status' => $request->status ?? 'active',
         ]);
@@ -34,18 +45,17 @@ class DemoBookController extends Controller
     // Show a product
     public function show($id)
     {
-        $leadStage = DemoBook::findOrFail($id);
+        $leadStage = SaleStage::findOrFail($id);
         return response()->json($leadStage);
     }
 
     // Update a product
     public function update(Request $request, $id)
     {
-        $leadStage = DemoBook::findOrFail($id);
+        $leadStage = SaleStage::findOrFail($id);
         $leadStage->update([
             'name' => $request->name,
             'status' => $request->status ?? 'active',
-            'date_require' => $request->date_require,
         ]);
 
         return response()->json($leadStage);
@@ -54,7 +64,7 @@ class DemoBookController extends Controller
     // Toggle product status
     public function toggleStatus($id)
     {
-        $leadStage = DemoBook::findOrFail($id);
+        $leadStage = SaleStage::findOrFail($id);
         $leadStage->status = $leadStage->status === 'active' ? 'inactive' : 'active';
         $leadStage->save();
 
@@ -64,7 +74,7 @@ class DemoBookController extends Controller
     public function destroy($id)
     {
         // Find the product by ID or fail if not found
-        $leadStage = DemoBook::findOrFail($id);
+        $leadStage = SaleStage::findOrFail($id);
 
         // Delete the product
         $leadStage->delete();
